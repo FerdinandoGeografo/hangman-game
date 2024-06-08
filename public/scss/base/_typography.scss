@@ -1,0 +1,54 @@
+@font-face {
+  font-family: "Mouse Memoirs";
+  font-display: swap;
+  font-weight: 400;
+  src: url("../../fonts/MouseMemoirs-Regular.ttf") format("truetype");
+}
+
+body {
+  font-family: $font;
+  font-size: 2.6rem;
+  line-height: 120%;
+  letter-spacing: 1.3px;
+}
+
+.heading {
+  line-height: 120%;
+
+  &--xl {
+    font-size: 13.6rem;
+    letter-spacing: -1.3px;
+  }
+
+  &--lg {
+    font-size: 8.8rem;
+    letter-spacing: 0;
+  }
+
+  &--md {
+    font-size: 4.8rem;
+    letter-spacing: 1.5px;
+  }
+
+  &--sm {
+    font-size: 3.2rem;
+    letter-spacing: 1.5px;
+  }
+
+  &--strokify {
+    margin-inline: auto;
+    --webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-image: var(--heading-gradient);
+    position: relative;
+
+    &::before {
+      content: attr(stroke-text);
+      position: absolute;
+      left: 0;
+      z-index: -1;
+      -webkit-text-stroke: 16px #243041;
+    }
+  }
+}

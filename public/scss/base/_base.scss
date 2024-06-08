@@ -1,0 +1,38 @@
+/*
+* RESET
+*/
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-weight: 400;
+}
+
+img {
+  display: block;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  box-sizing: border-box;
+  height: 100vh;
+
+  background-image: url("../../images/background-desktop.svg");
+  background-position: center center;
+  background-size: cover;
+}
