@@ -1,5 +1,12 @@
 import { NgClass, NgTemplateOutlet, UpperCasePipe } from '@angular/common';
-import { Component, computed, input, output, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  input,
+  model,
+  output,
+  signal,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -31,6 +38,7 @@ import { RouterLink } from '@angular/router';
       [class]="class()"
       [ngClass]="{ 'btn--icon': this.iconOnly() }"
       (click)="onClick.emit()"
+      [disabled]="disabled()"
     >
       <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
     </button>
@@ -153,8 +161,12 @@ import { RouterLink } from '@angular/router';
       }
 
       &--playable {
+        width: 11.2rem;
+        height: 12.8rem;
+        padding: 0;
+
         &:disabled {
-          background: rgba(36, 99, 255, .25);
+          opacity: .25
         }
       }
     }
@@ -163,6 +175,7 @@ import { RouterLink } from '@angular/router';
 export class ButtonComponent {
   routerLink = input<string | null>(null);
   label = input<string | null>(null);
+  disabled = model(false);
   styleClass = input<string | null>(null);
 
   onClick = output();

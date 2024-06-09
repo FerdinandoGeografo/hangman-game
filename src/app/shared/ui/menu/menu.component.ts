@@ -101,9 +101,10 @@ import { MenuTemplateDirective } from '../../directives/menu-template.directive'
 
         &__header {
           position: absolute;
-          left: 50%;
-          top: 0;
-          transform: translate(-50%, -11rem);
+          inset: 0 0 auto 0;
+          transform: translateY(-11rem);
+          display: flex;
+          justify-content: center;
         }
 
         &__items {
@@ -123,7 +124,7 @@ export class MenuComponent {
   menuStyleClass = input<string | null>(null);
   overlay = input(false);
 
-  isOpen = model(false);
+  isOpen = input(false);
 
   protected menuTemplates = contentChildren(MenuTemplateDirective);
 
@@ -142,4 +143,5 @@ export interface MenuItem {
   routerLink: string;
   onClick?: () => void;
   buttonStyleClass?: string;
+  visible: boolean;
 }

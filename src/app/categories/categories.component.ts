@@ -22,12 +22,13 @@ import { DataService } from '../shared/data/data.service';
 
       <!-- CATEGORIES -->
       <ul class="categories__list">
-        @for (category of categories(); track category.name) {
+        @for (category of categories(); track $index) {
         <li>
           <app-button
             routerLink="/game"
             styleClass="btn--primary btn--full"
             [label]="category.name"
+            (onClick)="data.selectCategory.next($index)"
           />
         </li>
         }
@@ -67,7 +68,7 @@ import { DataService } from '../shared/data/data.service';
   `,
 })
 export class CategoriesComponent {
-  #data = inject(DataService);
+  protected data = inject(DataService);
 
-  categories = this.#data.categories;
+  categories = this.data.categories;
 }

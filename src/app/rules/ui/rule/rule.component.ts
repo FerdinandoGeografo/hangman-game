@@ -6,7 +6,7 @@ import { Component, computed, input } from '@angular/core';
   standalone: true,
   imports: [UpperCasePipe],
   template: `
-    <article class="rule flex flex--column flex--center">
+    <article class="rule">
       <p class="rule__step heading heading--lg">
         {{ stepLabel() }}
       </p>
@@ -26,7 +26,11 @@ import { Component, computed, input } from '@angular/core';
       background: var(--white);
       border-radius: 4rem;
       padding: 6rem 4.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 4rem;
+
 
       &__step {
         color: var(--blue);
