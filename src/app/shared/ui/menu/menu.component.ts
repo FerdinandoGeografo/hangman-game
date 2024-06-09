@@ -9,6 +9,14 @@ import { ButtonComponent } from '../button/button.component';
 import { StrokifyDirective } from '../../directives/strokify.directive';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { MenuTemplateDirective } from '../../directives/menu-template.directive';
+import {
+  animate,
+  animation,
+  keyframes,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-menu',

@@ -11,9 +11,7 @@ import { RouterOutlet } from '@angular/router';
     </main>
   `,
   styles: `
-    .main {
-      height: 100%;
-    }
+    .main {}
   `,
 })
 export class AppComponent {}

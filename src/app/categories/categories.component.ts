@@ -10,11 +10,11 @@ import { DataService } from '../shared/data/data.service';
   standalone: true,
   imports: [UpperCasePipe, ButtonComponent, StrokifyDirective],
   template: `
-    <section class="categories">
+    <section class="categories section">
       <!-- HEADING -->
-      <h1 class="categories__heading">
+      <h1 class="heading">
         <app-button styleClass="btn--icon-secondary" routerLink="../">
-          <img src="images/icon-back.svg" alt="Back" class="btn btn__icon" />
+          <img src="images/icon-back.svg" alt="Back" class="btn__icon" />
         </app-button>
 
         <p class="heading heading--xl" appStrokify>Pick a Category</p>
@@ -36,25 +36,21 @@ import { DataService } from '../shared/data/data.service';
     </section>
   `,
   styles: `
+    @use "../../../public/scss/abstracts/_mixins.scss" as mixins;
+
+    .btn__icon {
+      @include mixins.respond(tablet) {
+        width: 2.7rem;
+        margin-bottom: 1rem;
+      }
+
+      @include mixins.respond(phone) {
+        width: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
     .categories {
-      height: 100%;
-      position: relative;
-      padding: 8rem 11.2rem 0 11.2rem;
-
-      &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: var(--bg-gradient);
-        opacity: .75;
-        z-index: -1;
-      }
-
-      &__heading {
-        display: flex;
-        align-items: center;
-      }
-
       &__list {
         list-style-type: none;
         margin-top: 15.5rem;
@@ -63,6 +59,20 @@ import { DataService } from '../shared/data/data.service';
         grid-auto-rows: 19rem;
         row-gap: 5rem;
         column-gap: 3.2rem;
+
+        @include mixins.respond(tablet) {
+          margin-top: 11.4rem;
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 18rem;
+          gap: 3.2rem;
+        }
+
+        @include mixins.respond(phone) {
+          margin-top: 10rem;
+          grid-template-columns: 1fr;
+          grid-auto-rows: 7.7rem;
+          gap: 1.6rem;
+        }
       }
     }
   `,

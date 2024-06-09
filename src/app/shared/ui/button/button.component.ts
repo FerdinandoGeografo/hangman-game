@@ -45,6 +45,8 @@ import { RouterLink } from '@angular/router';
     }
   `,
   styles: `
+    @use "../../../../../public/scss/abstracts/_mixins.scss" as mixins;
+
     .btn {
       &,
       &:link,
@@ -92,6 +94,17 @@ import { RouterLink } from '@angular/router';
           height: 9.4rem;
           width: 9.4rem;
           box-shadow: inset 0px -6px 0 7px rgba(157, 45, 245, .25);
+
+          @include mixins.respond(tablet) {
+            height: 6.4rem;
+            width: 6.4rem;
+            }
+
+            @include mixins.respond(phone) {
+              height: 4rem;
+              width: 4rem;
+              box-shadow: inset 0px -5px 0 -1px rgba(157, 45, 245, .25);
+          }
         }
 
         &:hover, &:focus, &:active {
@@ -118,6 +131,10 @@ import { RouterLink } from '@angular/router';
 
           background: #3C74FF;
           box-shadow: inset 0px -2px 0px 3px #140E66, inset 0px 1px 0px 6px var(--blue);
+        }
+
+        @include mixins.respond(phone) {
+          border-radius: 2rem;
         }
       }
 

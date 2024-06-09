@@ -9,10 +9,10 @@ import { RULES } from './data/rule.const';
   standalone: true,
   imports: [ButtonComponent, StrokifyDirective, RuleComponent],
   template: `
-    <section class="rules">
-      <h1 class="rules__heading">
+    <section class="rules section">
+      <h1 class="heading">
         <app-button styleClass="btn--icon-secondary" routerLink="../">
-          <img src="images/icon-back.svg" alt="Back" class="btn btn__icon" />
+          <img src="images/icon-back.svg" alt="Back" class="btn__icon" />
         </app-button>
 
         <p class="heading heading--xl" appStrokify>How to Play</p>
@@ -30,30 +30,37 @@ import { RULES } from './data/rule.const';
     </section>
   `,
   styles: `
+    @use '../../../public/scss/abstracts/_mixins.scss' as mixins;
+
+    .btn__icon {
+      @include mixins.respond(tablet) {
+        width: 2.7rem;
+        margin-bottom: 1rem;
+      }
+
+      @include mixins.respond(phone) {
+        width: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
     .rules {
-      height: 100%;
-      position: relative;
-      padding: 8rem 11.2rem 0 11.2rem;
-
-      &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: var(--bg-gradient);
-        opacity: .75;
-        z-index: -1;
-      }
-
-      &__heading {
-        display: flex;
-        align-items: center;
-      }
-
       &__grid {
         margin-top: 6.4rem;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        column-gap: 3.2rem;
+        gap: 3.2rem;
+
+        @include mixins.respond(tablet) {
+          margin-top: 10rem;
+          grid-template-columns: 1fr;
+        }
+
+        @include mixins.respond(phone) {
+          margin-top: 7.9rem;
+          grid-template-columns: 1fr;
+          gap: 2.4rem;
+        }
       }
     }
   `,
