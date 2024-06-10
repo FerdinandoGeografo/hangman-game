@@ -14,6 +14,7 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
           *appMenuTemplate="'header'"
           src="images/logo.svg"
           alt="Hangman Logo"
+          class="main-menu__logo"
         />
 
         <ng-template appMenuTemplate="content">
@@ -29,10 +30,25 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
     </section>
   `,
   styles: `
+    @use "../../../public/scss/abstracts/_mixins.scss" as mixins;
+
     .main-menu {
       min-height: 100vh;
       display: grid;
       place-items: center;
+      padding-inline: 2.55rem;
+
+      &__logo {
+        @include mixins.respond(phone) {
+          width: 80.5%;
+        }
+      }
+    }
+
+    .btn__icon {
+      @include mixins.respond(phone) {
+        width: 30%;
+      }
     }
   `,
 })

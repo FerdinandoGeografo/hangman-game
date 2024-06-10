@@ -88,6 +88,11 @@ import { RouterLink } from '@angular/router';
           &::before {
             box-shadow: inset 0px -4px 0px 5px #243041, inset 0px -12px 0px 11px #9D2DF5;
           }
+
+          @include mixins.respond(phone) {
+            height: 16rem;
+            width: 16rem;
+          }
         }
 
         &-secondary {
@@ -98,12 +103,12 @@ import { RouterLink } from '@angular/router';
           @include mixins.respond(tablet) {
             height: 6.4rem;
             width: 6.4rem;
-            }
+          }
 
-            @include mixins.respond(phone) {
-              height: 4rem;
-              width: 4rem;
-              box-shadow: inset 0px -5px 0 -1px rgba(157, 45, 245, .25);
+          @include mixins.respond(phone) {
+            height: 4rem;
+            width: 4rem;
+            box-shadow: inset 0px -5px 0 -1px rgba(157, 45, 245, .25);
           }
         }
 
@@ -181,6 +186,11 @@ import { RouterLink } from '@angular/router';
         width: 11.2rem;
         height: 12.8rem;
         padding: 0;
+
+        @include mixins.respond(tablet) {
+          width: 8.8rem;
+          height: 11.2rem;
+        }
 
         &:disabled {
           opacity: .25

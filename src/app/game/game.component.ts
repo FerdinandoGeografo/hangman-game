@@ -45,8 +45,11 @@ import { GameWordComponent } from './ui/game-word/game-word.component';
     </section>
   `,
   styles: `
+    @use "../../../public/scss/abstracts/_mixins.scss" as mixins;
+
     .game {
-      height: 100%;
+      min-height: 100vh;
+
       position: relative;
       padding: 6rem 11.2rem 0 11.2rem;
 
@@ -57,6 +60,10 @@ import { GameWordComponent } from './ui/game-word/game-word.component';
         background: var(--bg-gradient);
         opacity: .75;
         z-index: -1;
+      }
+
+      @include mixins.respond(tablet) {
+        padding: 6rem 3.2rem 0 3.2rem;
       }
     }
   `,

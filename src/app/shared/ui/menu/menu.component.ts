@@ -1,22 +1,8 @@
-import {
-  Component,
-  computed,
-  contentChildren,
-  input,
-  model,
-} from '@angular/core';
+import { Component, computed, contentChildren, input } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { StrokifyDirective } from '../../directives/strokify.directive';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { MenuTemplateDirective } from '../../directives/menu-template.directive';
-import {
-  animate,
-  animation,
-  keyframes,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 
 @Component({
   selector: 'app-menu',
@@ -65,6 +51,13 @@ import {
     }
   `,
   styles: `
+      @use "../../../../../public/scss/abstracts/_mixins.scss" as mixins;
+
+      :host {
+        max-width: 59.2rem;
+        width: 100%;
+      }
+
       .mask {
         position: absolute;
         inset: 0;
@@ -78,16 +71,36 @@ import {
         border-radius: 7.2rem;
         box-shadow: inset 0 -8px 0 4px #140E66, inset 0 6px 0 8px #2463FF;
         position: relative;
-        width: 59.2rem;
+        max-width: 59.2rem;
+        width: 100%;
+
+        @include mixins.respond(phone) {
+          border-radius: 4.8rem;
+        }
 
         &--main {
           margin-top: 11rem;
           height: 50rem;
 
+          @include mixins.respond(phone) {
+            margin-top: 8rem;
+            height: unset;
+          }
+
           .menu__items {
             padding-top: 12.9rem;
             gap: 5.8rem;
+
+            @include mixins.respond(phone) {
+              padding: 13.8rem 0 6.4rem 0;
+              gap: 5.7rem;
+
+              ::ng-deep .btn--primary {
+                border-radius: 4rem;
+              }
+            }
           }
+
         }
 
         &--secondary {
@@ -113,6 +126,10 @@ import {
           transform: translateY(-11rem);
           display: flex;
           justify-content: center;
+
+          @include mixins.respond(phone) {
+            transform: translateY(-5rem);
+          }
         }
 
         &__items {

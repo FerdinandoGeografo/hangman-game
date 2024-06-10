@@ -21,6 +21,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     </ul>
   `,
   styles: `
+    @use "../../../../../public/scss/abstracts/_mixins.scss" as mixins;
+
     .game-keyboard {
       margin-top: 12rem;
       padding-left: 2.9rem;
@@ -29,6 +31,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
       grid-template-columns: repeat(auto-fit, 10.9rem);
       gap: 2.4rem;
       grid-auto-rows: 8.4rem;
+
+      @include mixins.respond(tablet) {
+        margin-top: 13.4rem;
+        padding-left: 0;
+        grid-template-columns: repeat(auto-fit, 6.4rem);
+        column-gap: 1.6rem;
+      }
     }
   `,
 })

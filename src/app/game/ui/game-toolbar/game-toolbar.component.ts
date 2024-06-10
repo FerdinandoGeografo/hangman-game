@@ -13,7 +13,7 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
           styleClass="btn--icon-secondary"
           (onClick)="onMenuClick.emit()"
         >
-          <img class="btn__label" src="images/icon-menu.svg" alt="Back" />
+          <img class="btn__icon" src="images/icon-menu.svg" alt="Back" />
         </app-button>
 
         <h1 class="game-toolbar__category heading heading--lg">
@@ -38,19 +38,44 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
     </aside>
   `,
   styles: `
+    @use "../../../../../public/scss/abstracts/_mixins.scss" as mixins;
+
+    .btn__icon {
+      @include mixins.respond(tablet) {
+        width: 2.5rem;
+      }
+
+      @include mixins.respond(phone) {
+        width: 1.8rem;
+      }
+    }
+
     .game-toolbar {
-      height: 10.6rem;
       display: flex;
       justify-content: space-between;
+      gap: 1.6rem;
+
+      @include mixins.respond(tablet) {
+        padding: 0 1.6rem 0 .8rem;
+      }
 
       &__start {
         display: flex;
         align-items: center;
         gap: 5.7rem;
+
+        @include mixins.respond(tablet) {
+          gap: 3.2rem;
+        }
       }
 
       &__category {
         color: var(--white);
+
+        @include mixins.respond(tablet) {
+          font-size: 4.8rem;
+          text-transform: uppercase;
+        }
       }
 
       &__end {
@@ -66,6 +91,10 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
         border-radius: var(--health-radius);
         height: 3.1rem;
         width: 24rem;
+
+        @include mixins.respond(tablet) {
+          width: 16rem;
+        }
 
         &::-webkit-progress-bar {
           border-radius: var(--health-radius);

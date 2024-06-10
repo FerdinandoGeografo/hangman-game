@@ -27,19 +27,29 @@ import { KeyGame } from '../../data/game.const';
     </ul>
   `,
   styles: `
+    @use "../../../../../public/scss/abstracts/_mixins.scss" as mixins;
+
     .word {
       margin-top: 8.8rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 16rem;
+      column-gap: 11.2rem;
       row-gap: 1.6rem;
       justify-content: center;
+
+      @include mixins.respond(tablet) {
+        margin-top: 11.1rem;
+      }
 
       &__sub-word {
         display: flex;
         gap: 1.6rem;
         height: 12.8rem;
-        flex-basis: 11.2rem;
+
+        @include mixins.respond(tablet) {
+          gap: 1.2rem;
+          height: 11.2rem;
+        }
       }
     }
   `,
