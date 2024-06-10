@@ -65,6 +65,10 @@ import { GameWordComponent } from './ui/game-word/game-word.component';
       @include mixins.respond(tablet) {
         padding: 6rem 3.2rem 0 3.2rem;
       }
+
+      @include mixins.respond(phone) {
+        padding: 4.6rem 2.55rem 0 2.55rem;
+      }
     }
   `,
 })

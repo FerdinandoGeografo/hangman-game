@@ -140,6 +140,9 @@ import { RouterLink } from '@angular/router';
 
         @include mixins.respond(phone) {
           border-radius: 2rem;
+          &:before {
+            border-radius: 2rem;
+          }
         }
       }
 
@@ -180,6 +183,10 @@ import { RouterLink } from '@angular/router';
         &:disabled {
           background: rgba(255,255,255,.25);
         }
+
+        @include mixins.respond(phone) {
+          border-radius: 8px;
+        }
       }
 
       &--playable {
@@ -190,6 +197,14 @@ import { RouterLink } from '@angular/router';
         @include mixins.respond(tablet) {
           width: 8.8rem;
           height: 11.2rem;
+        }
+
+        @include mixins.respond(phone) {
+          width: 4rem;
+          height: 6.6rem;
+          border-radius: 1.2rem;
+
+          &::before { border-radius: 1.2rem; }
         }
 
         &:disabled {

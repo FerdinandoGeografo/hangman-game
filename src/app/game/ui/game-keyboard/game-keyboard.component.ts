@@ -38,6 +38,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         grid-template-columns: repeat(auto-fit, 6.4rem);
         column-gap: 1.6rem;
       }
+
+      @include mixins.respond(phone) {
+        margin-top: 11.8rem;
+        grid-template-columns: repeat(auto-fit, 2.8rem);
+        column-gap: 8px;
+        row-gap: 2.4rem;
+        grid-auto-rows: 5.6rem;
+      }
     }
   `,
 })

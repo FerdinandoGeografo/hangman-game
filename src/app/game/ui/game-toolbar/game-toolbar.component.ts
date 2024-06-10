@@ -30,7 +30,7 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
         ></progress>
 
         <img
-          class="game__health-icon"
+          class="game-toolbar__health-icon"
           src="images/icon-heart.svg"
           alt="Health icon"
         />
@@ -46,7 +46,7 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
       }
 
       @include mixins.respond(phone) {
-        width: 1.8rem;
+        width: 1.6rem;
       }
     }
 
@@ -59,6 +59,10 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
         padding: 0 1.6rem 0 .8rem;
       }
 
+      @include mixins.respond(phone) {
+        padding: 0;
+      }
+
       &__start {
         display: flex;
         align-items: center;
@@ -66,6 +70,10 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
         @include mixins.respond(tablet) {
           gap: 3.2rem;
+        }
+
+        @include mixins.respond(phone) {
+          gap: 1.6rem;
         }
       }
 
@@ -76,12 +84,20 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
           font-size: 4.8rem;
           text-transform: uppercase;
         }
+
+        @include mixins.respond(phone) {
+          font-size: 4rem;
+          text-transform: unset;
+          letter-spacing: -.25px;
+        }
       }
 
       &__end {
         display: flex;
         align-items: center;
         gap: 4rem;
+
+        @include mixins.respond(phone) { gap: 1.6rem }
       }
 
       &__health-bar {
@@ -94,6 +110,12 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
         @include mixins.respond(tablet) {
           width: 16rem;
+        }
+
+        @include mixins.respond(phone) {
+          --health-padding: 4px;
+          height: 1.6rem;
+          width: 5.7rem;
         }
 
         &::-webkit-progress-bar {
@@ -117,6 +139,10 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
 
       &__health-icon {
         width: 5.3rem;
+
+        @include mixins.respond(phone) {
+          width: 2.6rem;
+        }
       }
     }
   `,

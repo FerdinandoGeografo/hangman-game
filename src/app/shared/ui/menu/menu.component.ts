@@ -87,6 +87,16 @@ import { MenuTemplateDirective } from '../../directives/menu-template.directive'
             height: unset;
           }
 
+          .menu__header {
+            @include mixins.respond(tablet) {
+              transform: translateY(-11rem);
+            }
+
+            @include mixins.respond(phone) {
+              transform: translateY(-5rem);
+            }
+          }
+
           .menu__items {
             padding-top: 12.9rem;
             gap: 5.8rem;
@@ -106,9 +116,27 @@ import { MenuTemplateDirective } from '../../directives/menu-template.directive'
         &--secondary {
           height: 44.5rem;
 
+          .menu__header {
+            @include mixins.respond(tablet) {
+              transform: translateY(-7.2rem);
+            }
+
+            @include mixins.respond(phone) {
+              transform: translateY(-6.1rem);
+            }
+          }
+
           .menu__items {
             padding-top: 12rem;
             gap: 3.4rem;
+
+            @include mixins.respond(phone) {
+              padding-top: 10.4rem;
+
+              ::ng-deep .btn--primary {
+                border-radius: 4rem;
+              }
+            }
           }
         }
 
@@ -118,17 +146,30 @@ import { MenuTemplateDirective } from '../../directives/menu-template.directive'
           left: 50%;
           transform: translate(-50%, -50%);
           z-index: 10;
+
+          @include mixins.respond(phone) {
+            left: 2.55rem;
+            right: 2.55rem;
+            width: unset;
+            transform: translate(0, -50%);
+          }
         }
 
         &__header {
           position: absolute;
           inset: 0 0 auto 0;
-          transform: translateY(-11rem);
           display: flex;
           justify-content: center;
 
-          @include mixins.respond(phone) {
-            transform: translateY(-5rem);
+          .heading--xl {
+            @include mixins.respond(tablet) {
+              font-size: 13.6rem;
+              letter-spacing: -1.3px;
+            }
+
+            @include mixins.respond(phone) {
+              font-size: 9.4rem;
+            }
           }
         }
 

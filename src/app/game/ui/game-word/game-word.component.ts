@@ -29,6 +29,16 @@ import { KeyGame } from '../../data/game.const';
   styles: `
     @use "../../../../../public/scss/abstracts/_mixins.scss" as mixins;
 
+    .btn__label {
+      @include mixins.respond(tablet) {
+        font-size: 6.4rem;
+      }
+
+      @include mixins.respond(phone) {
+        font-size: 4rem;
+      }
+    }
+
     .word {
       margin-top: 8.8rem;
       display: flex;
@@ -39,6 +49,13 @@ import { KeyGame } from '../../data/game.const';
 
       @include mixins.respond(tablet) {
         margin-top: 11.1rem;
+        column-gap: 8.8rem;
+      }
+
+      @include mixins.respond(phone) {
+        margin-top: 7.8rem;
+        column-gap: 4rem;
+        row-gap: 1.2rem;
       }
 
       &__sub-word {
@@ -49,6 +66,11 @@ import { KeyGame } from '../../data/game.const';
         @include mixins.respond(tablet) {
           gap: 1.2rem;
           height: 11.2rem;
+        }
+
+        @include mixins.respond(phone) {
+          gap: 8px;
+          height: 6.6rem;
         }
       }
     }

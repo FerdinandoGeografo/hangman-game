@@ -178,7 +178,7 @@ export class DataService {
             ...state,
             menuItems: [
               {
-                label: 'Play Again',
+                label: 'Play Again!',
                 onClick: () => this.selectAvailableWord.next(),
                 routerLink: '',
                 visible: this.gameLost() || this.gameWon(),
