@@ -1,10 +1,10 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import { MenuComponent } from '../shared/ui/menu/menu.component';
-import { DataService } from '../shared/data/data.service';
 import { GameToolbarComponent } from './ui/game-toolbar/game-toolbar.component';
 import { GameKeyboardComponent } from './ui/game-keyboard/game-keyboard.component';
 import { GameWordComponent } from './ui/game-word/game-word.component';
+import { GameStore } from '../shared/data/game-store';
 
 @Component({
   selector: 'app-game',
@@ -19,27 +19,27 @@ import { GameWordComponent } from './ui/game-word/game-word.component';
   template: `
     <section class="game">
       <app-game-toolbar
-        [selectedCategory]="data.selectedCategory()!.name"
-        [attemptsLeft]="data.attemptsLeft()"
-        (onMenuClick)="data.openMenu$.next()"
+        [selectedCategory]="store.selectedCategory()!"
+        [attemptsLeft]="store.attemptsLeft()"
+        (onMenuClick)="store.openMenu()"
       />
 
       <app-game-word
-        [word]="data.currentWord()!"
-        [guessedLetters]="data.guessedLetters()"
+        [word]="store.selectedOption()!.toUpperCase()"
+        [guessedLetters]="store.attempted()"
       ></app-game-word>
 
       <app-game-keyboard
-        [guessedLetters]="data.guessedLetters()"
-        (onKeyClick)="data.guessLetter.next($event)"
+        [guessedLetters]="store.attempted()"
+        (onKeyClick)="store.attemptLetter($event)"
       />
 
       <app-menu
         menuStyleClass="menu--secondary"
         [overlay]="true"
-        [isOpen]="data.menuOpen()"
-        [header]="menuHeader()"
-        [menuItems]="menuItems()"
+        [isOpen]="store.menuOpen()"
+        [header]="store.gameStatus()"
+        [menuItems]="store.menuItems()"
       >
       </app-menu>
     </section>
@@ -73,13 +73,5 @@ import { GameWordComponent } from './ui/game-word/game-word.component';
   `,
 })
 export class GameComponent {
-  protected data = inject(DataService);
-
-  menuHeader = computed(() => {
-    if (this.data.gameLost()) return 'You Lose';
-    if (this.data.gameWon()) return 'You Win';
-
-    return 'Paused';
-  });
-  menuItems = this.data.menuItems;
+  readonly store = inject(GameStore);
 }

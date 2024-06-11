@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { Router, Routes } from '@angular/router';
-import { DataService } from './shared/data/data.service';
+import { GameStore } from './shared/data/game-store';
 
 export const routes: Routes = [
   {
@@ -28,7 +28,7 @@ export const routes: Routes = [
       import('./game/game.component').then((c) => c.GameComponent),
     canActivate: [
       () =>
-        inject(DataService).selectedCategoryIndex() === -1
+        !inject(GameStore).selectedCategory()
           ? inject(Router).navigate(['main-menu'])
           : true,
     ],

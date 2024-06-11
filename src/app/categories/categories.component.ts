@@ -1,9 +1,8 @@
 import { UpperCasePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import { StrokifyDirective } from '../shared/directives/strokify.directive';
-import { DataService } from '../shared/data/data.service';
+import { GameStore } from '../shared/data/game-store';
 
 @Component({
   selector: 'app-categories',
@@ -22,13 +21,13 @@ import { DataService } from '../shared/data/data.service';
 
       <!-- CATEGORIES -->
       <ul class="categories__list">
-        @for (category of categories(); track $index) {
+        @for (category of store.categoryNames(); track $index) {
         <li>
           <app-button
             routerLink="/game"
             styleClass="btn--primary btn--full"
-            [label]="category.name"
-            (onClick)="data.selectCategory.next($index)"
+            [label]="category"
+            (onClick)="store.startGame(category)"
           />
         </li>
         }
@@ -78,7 +77,5 @@ import { DataService } from '../shared/data/data.service';
   `,
 })
 export class CategoriesComponent {
-  protected data = inject(DataService);
-
-  categories = this.data.categories;
+  readonly store = inject(GameStore);
 }

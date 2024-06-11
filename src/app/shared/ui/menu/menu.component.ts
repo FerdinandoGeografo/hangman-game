@@ -3,6 +3,7 @@ import { ButtonComponent } from '../button/button.component';
 import { StrokifyDirective } from '../../directives/strokify.directive';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { MenuTemplateDirective } from '../../directives/menu-template.directive';
+import { MenuItem } from '../../models/menu-item.model';
 
 @Component({
   selector: 'app-menu',
@@ -34,7 +35,7 @@ import { MenuTemplateDirective } from '../../directives/menu-template.directive'
           @for (menuItem of menuItems(); track $index) {
           <app-button
             [styleClass]="menuItem.buttonStyleClass || 'btn--primary'"
-            [routerLink]="menuItem.routerLink"
+            [routerLink]="menuItem.routerLink || null"
             (onClick)="menuItem.onClick?.()"
           >
             <div class="btn__label">
@@ -200,11 +201,4 @@ export class MenuComponent {
     () => this.menuTemplates().find((el) => el.type() === 'content')?.tpl
   );
 }
-
-export interface MenuItem {
-  label: string;
-  routerLink: string;
-  onClick?: () => void;
-  buttonStyleClass?: string;
-  visible: boolean;
-}
+export { MenuItem };
