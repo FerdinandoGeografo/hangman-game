@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { ALPHABET, KeyGame } from '../../data/game.const';
+import { ALPHABET, KeyGame } from '../../../shared/data/game-store';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
 import { debounceTime, filter, fromEvent, map } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

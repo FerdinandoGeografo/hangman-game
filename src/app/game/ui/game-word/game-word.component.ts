@@ -1,6 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
-import { KeyGame } from '../../data/game.const';
+import { KeyGame } from '../../../shared/data/game-store';
 
 @Component({
   selector: 'app-game-word',

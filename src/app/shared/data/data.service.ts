@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Subject, concatMap, filter, map, take, tap } from 'rxjs';
-import { KeyGame } from '../../game/data/game.const';
+import { Subject, concatMap, map, tap } from 'rxjs';
+import { KeyGame } from './game-store';
 import { MenuItem } from '../ui/menu/menu.component';
 
 @Injectable({

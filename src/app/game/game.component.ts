@@ -1,6 +1,6 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ButtonComponent } from '../shared/ui/button/button.component';
-import { MenuComponent, MenuItem } from '../shared/ui/menu/menu.component';
+import { MenuComponent } from '../shared/ui/menu/menu.component';
 import { DataService } from '../shared/data/data.service';
 import { GameToolbarComponent } from './ui/game-toolbar/game-toolbar.component';
 import { GameKeyboardComponent } from './ui/game-keyboard/game-keyboard.component';

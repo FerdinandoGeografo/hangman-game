@@ -88,9 +88,8 @@ import { MenuTemplateDirective } from '../../directives/menu-template.directive'
           }
 
           .menu__header {
-            @include mixins.respond(tablet) {
-              transform: translateY(-11rem);
-            }
+            transform: translateY(-11rem);
+
 
             @include mixins.respond(phone) {
               transform: translateY(-5rem);
@@ -117,9 +116,7 @@ import { MenuTemplateDirective } from '../../directives/menu-template.directive'
           height: 44.5rem;
 
           .menu__header {
-            @include mixins.respond(tablet) {
-              transform: translateY(-7.2rem);
-            }
+            transform: translateY(-7.2rem);
 
             @include mixins.respond(phone) {
               transform: translateY(-6.1rem);

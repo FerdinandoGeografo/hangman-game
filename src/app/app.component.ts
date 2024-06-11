@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { GameStore } from './shared/data/game-store';
+import { getState } from '@ngrx/signals';
 
 @Component({
   selector: 'app-root',
@@ -14,4 +16,11 @@ import { RouterOutlet } from '@angular/router';
     .main {}
   `,
 })
-export class AppComponent {}
+export class AppComponent {
+  readonly #store = inject(GameStore);
+
+  loggerEffect = effect(() => {
+    const state = getState(this.#store);
+    console.log('GAME STATE CHANGED: ', state);
+  });
+}
