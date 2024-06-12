@@ -4,3 +4,5 @@ export type MenuItem = {
   onClick?: () => void;
   buttonStyleClass?: string;
 };
+
+export type MenuTemplateType = 'header' | 'content';

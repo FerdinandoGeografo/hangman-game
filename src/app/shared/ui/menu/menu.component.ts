@@ -9,7 +9,7 @@ import { ButtonComponent } from '../button/button.component';
 import { StrokifyDirective } from '../../directives/strokify.directive';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { MenuTemplateDirective } from '../../directives/menu-template.directive';
-import { MenuItem } from '../../models/menu-item.model';
+import { MenuItem } from '../../models/menu.model';
 
 @Component({
   selector: 'app-menu',

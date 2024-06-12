@@ -1,4 +1,5 @@
 import { Directive, TemplateRef, inject, input } from '@angular/core';
+import { MenuTemplateType } from '../models/menu.model';
 
 @Directive({
   selector: '[appMenuTemplate]',
@@ -8,5 +9,3 @@ export class MenuTemplateDirective {
   tpl = inject(TemplateRef);
   type = input.required<MenuTemplateType>({ alias: 'appMenuTemplate' });
 }
-
-export type MenuTemplateType = 'header' | 'content';

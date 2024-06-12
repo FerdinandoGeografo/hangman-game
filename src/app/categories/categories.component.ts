@@ -2,7 +2,7 @@ import { UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import { StrokifyDirective } from '../shared/directives/strokify.directive';
-import { GameStore } from '../shared/data/game-store';
+import { GlobalStore } from '../shared/data/global-store';
 
 @Component({
   selector: 'app-categories',
@@ -21,7 +21,7 @@ import { GameStore } from '../shared/data/game-store';
 
       <!-- CATEGORIES -->
       <ul class="categories__list">
-        @for (category of store.categoryNames(); track $index) {
+        @for (category of store.categoriesNames(); track $index) {
         <li>
           <app-button
             routerLink="/game"
@@ -78,5 +78,5 @@ import { GameStore } from '../shared/data/game-store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoriesComponent {
-  readonly store = inject(GameStore);
+  readonly store = inject(GlobalStore);
 }

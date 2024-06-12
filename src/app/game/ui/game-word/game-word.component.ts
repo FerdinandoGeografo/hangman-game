@@ -1,6 +1,11 @@
-import { Component, computed, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+} from '@angular/core';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
-import { KeyGame } from '../../../shared/data/game-store';
+import { Option } from '../../../shared/models/option.model';
 
 @Component({
   selector: 'app-game-word',
@@ -75,10 +80,11 @@ import { KeyGame } from '../../../shared/data/game-store';
       }
     }
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameWordComponent {
-  word = input('');
-  guessedLetters = input<KeyGame[]>([]);
+  word = input.required<Option['name']>();
+  guessedLetters = input<string[]>([]);
 
-  subWords = computed(() => this.word().toUpperCase().split(' '));
+  subWords = computed(() => this.word().split(' '));
 }

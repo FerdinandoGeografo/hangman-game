@@ -4,7 +4,7 @@ import { MenuComponent } from '../shared/ui/menu/menu.component';
 import { GameToolbarComponent } from './ui/game-toolbar/game-toolbar.component';
 import { GameKeyboardComponent } from './ui/game-keyboard/game-keyboard.component';
 import { GameWordComponent } from './ui/game-word/game-word.component';
-import { GameStore } from '../shared/data/game-store';
+import { GlobalStore } from '../shared/data/global-store';
 
 @Component({
   selector: 'app-game',
@@ -21,27 +21,26 @@ import { GameStore } from '../shared/data/game-store';
       <app-game-toolbar
         [selectedCategory]="store.selectedCategory()!"
         [attemptsLeft]="store.attemptsLeft()"
-        (onMenuClick)="store.openMenu()"
       />
 
       <app-game-word
         [word]="store.selectedOption()!.toUpperCase()"
-        [guessedLetters]="store.attempted()"
+        [guessedLetters]="store.attemptedLetters()"
       ></app-game-word>
 
       <app-game-keyboard
-        [guessedLetters]="store.attempted()"
+        [guessedLetters]="store.attemptedLetters()"
         (onKeyClick)="store.attemptLetter($event)"
       />
 
-      <app-menu
+      <!-- <app-menu
         menuStyleClass="menu--secondary"
         [overlay]="true"
         [isOpen]="store.menuOpen()"
         [header]="store.gameStatus()"
         [menuItems]="store.menuItems()"
       >
-      </app-menu>
+      </app-menu> -->
     </section>
   `,
   styles: `
@@ -74,5 +73,5 @@ import { GameStore } from '../shared/data/game-store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameComponent {
-  readonly store = inject(GameStore);
+  readonly store = inject(GlobalStore);
 }

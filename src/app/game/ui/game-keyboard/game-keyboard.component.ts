@@ -1,8 +1,13 @@
-import { Component, input, output } from '@angular/core';
-import { ALPHABET, KeyGame } from '../../../shared/data/game-store';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
 import { debounceTime, filter, fromEvent, map } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ALPHABET, Letter } from '../../../shared/models/letter.model';
 
 @Component({
   selector: 'app-game-keyboard',
@@ -48,15 +53,16 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
       }
     }
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameKeyboardComponent {
-  guessedLetters = input<KeyGame[]>([]);
-  onKeyClick = output<KeyGame>();
+  guessedLetters = input<Letter[]>([]);
+  onKeyClick = output<Letter>();
 
   keys = ALPHABET;
 
   handleKeyClick(event: KeyboardEvent) {
-    const key = event.key.toUpperCase();
+    const key = event.key.toUpperCase() as Letter;
     if (this.keys.includes(key) && !this.guessedLetters().includes(key))
       this.onKeyClick.emit(key);
   }
@@ -66,7 +72,7 @@ export class GameKeyboardComponent {
       .pipe(
         takeUntilDestroyed(),
         debounceTime(200),
-        map((e) => (e as KeyboardEvent).key.toUpperCase()),
+        map((e) => (e as KeyboardEvent).key.toUpperCase() as Letter),
         filter(
           (key) =>
             this.keys.includes(key) && !this.guessedLetters().includes(key)
