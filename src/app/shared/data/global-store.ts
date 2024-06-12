@@ -24,10 +24,7 @@ type GlobalState = {
 };
 
 const initialState: GlobalState = {
-  categories: {
-    Movies: [],
-    Countries: [],
-  },
+  categories: {},
   selectedCategory: null,
   selectedOption: null,
   attemptsLeft: 8,
@@ -73,7 +70,27 @@ export const GlobalStore = signalStore(
         tap(({ categories }) => patchState(store, { categories }))
       )
     ),
-    startGame(category: Category) {},
+    startGame(category: Category) {
+      // 1. Select a random word from category selectables options
+      patchState(store, ({ categories }) => ({
+        selectedCategory: category,
+        selectedOption: getRandomElement(
+          categories[category].filter((el) => !el.selected)
+        ).name.toUpperCase(),
+      }));
+      // 2. Updates categories for the new selection
+      patchState(store, ({ categories, selectedOption }) => ({
+        categories: {
+          ...categories,
+          [category]: categories[category].map((el) =>
+            el.name.toUpperCase() === selectedOption
+              ? { ...el, selected: true }
+              : el
+          ),
+        },
+      }));
+      //3. Prepopulate attemptedLetters with two random letters contained in toGuessLetters array
+    },
     attemptLetter(letter: Letter) {},
     quitGame() {},
   })),
