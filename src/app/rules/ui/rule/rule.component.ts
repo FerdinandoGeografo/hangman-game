@@ -1,5 +1,10 @@
 import { UpperCasePipe } from '@angular/common';
-import { Component, computed, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+} from '@angular/core';
 
 @Component({
   selector: 'app-rule',
@@ -82,6 +87,7 @@ import { Component, computed, input } from '@angular/core';
       }
     }
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RuleComponent {
   step = input.required<number>();

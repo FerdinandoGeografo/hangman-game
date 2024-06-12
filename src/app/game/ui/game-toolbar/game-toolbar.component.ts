@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
-import { Category } from '../../../shared/data/data.service';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { Category } from '../../../shared/models/category.model';
 
 @Component({
   selector: 'app-game-toolbar',
@@ -149,7 +149,7 @@ import { ButtonComponent } from '../../../shared/ui/button/button.component';
 })
 export class GameToolbarComponent {
   attemptsLeft = input.required<number>();
-  selectedCategory = input.required<Category['name']>();
+  selectedCategory = input.required<Category>();
 
   onMenuClick = output();
 }

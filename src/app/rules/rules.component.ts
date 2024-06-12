@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import { StrokifyDirective } from '../shared/directives/strokify.directive';
 import { RuleComponent } from './ui/rule/rule.component';
@@ -64,6 +64,7 @@ import { RULES } from './data/rule.const';
       }
     }
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RulesComponent {
   protected rules = RULES;

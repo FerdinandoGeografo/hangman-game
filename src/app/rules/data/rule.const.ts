@@ -12,7 +12,7 @@ export const RULES: Rule[] = [
   {
     name: 'Guess letters',
     description:
-      '            Take turns guessing letters. The computer fills in the relevant blank spaces if your guess is correct. If it’s wrong, you lose some health, which empties after eight incorrect guesses.',
+      'Take turns guessing letters. The computer fills in the relevant blank spaces if your guess is correct. If it’s wrong, you lose some health, which empties after eight incorrect guesses.',
   },
   {
     name: 'Win or lose',

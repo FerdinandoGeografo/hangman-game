@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import { MenuComponent } from '../shared/ui/menu/menu.component';
 import { MenuTemplateDirective } from '../shared/directives/menu-template.directive';
@@ -51,5 +51,6 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
       }
     }
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainMenuComponent {}

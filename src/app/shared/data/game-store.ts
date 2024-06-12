@@ -141,6 +141,7 @@ export const GameStore = signalStore(
             label: 'Quit Game',
             routerLink: 'main-menu',
             buttonStyleClass: 'btn--secondary',
+            onClick: () => this.quitGame(),
           },
         ],
       });
@@ -155,3 +156,38 @@ export const GameStore = signalStore(
     },
   })
 );
+
+/**
+ *  #### STATE ####
+ *
+ * + categories : Record<string, Option[]> = { "Movies": [{ name: "Lost", selected: true }, { name: "Pickable", selected: false }]}
+ * + selectedCategory: Category  = "Movies"
+ * + selectedOption: Option['name'] = "Movies",
+ * + attemptsLeft: number =  0,
+ * + attemptedLetters: : Letter[],
+ *
+ *  #### ACTION METHODS ####
+ * + loadCategories(),  //Load categories data
+ * + startGame(category)
+ *
+ *   //Starts the game:
+ *   1. Select random word from the selectable category options.
+ *   2. Updates the option of that category setting selected to true,
+ *   3. Prepopulate attemptedLetters with two random letters contained in the toGuessLetters array.
+ *
+ * + attemptLetter(letter),
+ *   // Check if the letter is in toGuessLetters to decrease or not the attemptsLeft
+ *   // and updates attempted letters with this one.
+ *
+ * + quitGame(), //Reset the state to initial, but keeping categories.
+ * + closeMenu() // Reset current menu items
+ * + openMenu() // Set menuItems based on derived state
+ *
+ * #### DERIVED STATE ####
+ * + categoriesNames : All category names
+ * + toGuessLetters : All letters splitted from selectedOption
+ * + prettyGameStatus:
+ *               toGuessLetters are all included in attempted ones -> You win
+ *               attemptsLeft is equal to 0 -> You lose
+ *               else -> Paused
+ */

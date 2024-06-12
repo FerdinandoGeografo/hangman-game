@@ -1,5 +1,5 @@
 import { UpperCasePipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import { StrokifyDirective } from '../shared/directives/strokify.directive';
 import { GameStore } from '../shared/data/game-store';
@@ -75,6 +75,7 @@ import { GameStore } from '../shared/data/game-store';
       }
     }
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoriesComponent {
   readonly store = inject(GameStore);

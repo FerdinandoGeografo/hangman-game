@@ -1,4 +1,10 @@
-import { Component, computed, contentChildren, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  contentChildren,
+  input,
+} from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { StrokifyDirective } from '../../directives/strokify.directive';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
@@ -180,6 +186,7 @@ import { MenuItem } from '../../models/menu-item.model';
       }
 
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent {
   header = input<string | null>(null);

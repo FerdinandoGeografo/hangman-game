@@ -1,11 +1,11 @@
 import { NgClass, NgTemplateOutlet, UpperCasePipe } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   input,
   model,
   output,
-  signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -213,6 +213,7 @@ import { RouterLink } from '@angular/router';
       }
     }
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
   routerLink = input<string | null>(null);

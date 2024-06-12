@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import { MenuComponent } from '../shared/ui/menu/menu.component';
 import { GameToolbarComponent } from './ui/game-toolbar/game-toolbar.component';
@@ -71,6 +71,7 @@ import { GameStore } from '../shared/data/game-store';
       }
     }
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameComponent {
   readonly store = inject(GameStore);
