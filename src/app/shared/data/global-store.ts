@@ -44,7 +44,7 @@ const generateRandom: <T>(arr: T[], num: number) => T[] = (arr, num) => {
   }
 
   const result = Array.from(randomIndexes).map((index) => arr[index]);
-  console.log(result);
+  console.log(arr);
   return result;
 };
 
@@ -55,7 +55,7 @@ export const GlobalStore = signalStore(
   withComputed(({ categories, selectedOption }) => ({
     categoriesNames: computed(() => Object.keys(categories())),
     toGuessLetters: computed<Letter[]>(
-      () => (selectedOption()?.replace(' ', '').split('') || []) as Letter[]
+      () => [...new Set(selectedOption()?.replaceAll(" ", "").split(""))] as Letter[]
     ),
   })),
   withComputed(
@@ -96,7 +96,7 @@ export const GlobalStore = signalStore(
           ),
         },
         selectedCategory: category,
-        selectedOption: option.name.toUpperCase().replace(`'`, ''),
+        selectedOption: option.name.toUpperCase().replaceAll(`'`, ''),
         attemptsLeft: 8,
         menuConfig: initialState.menuConfig,
       }));
