@@ -55,6 +55,7 @@ import { Option } from '../../../shared/models/option.model';
       @include mixins.respond(tablet) {
         margin-top: 11.1rem;
         column-gap: 8.8rem;
+        overflow-x: scroll;
       }
 
       @include mixins.respond(phone) {

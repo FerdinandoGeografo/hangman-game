@@ -25,7 +25,7 @@ import { GlobalStore } from '../shared/data/global-store';
       />
 
       <app-game-word
-        [word]="store.selectedOption()!.toUpperCase()"
+        [word]="store.selectedOption()!"
         [guessedLetters]="store.attemptedLetters()"
       ></app-game-word>
 

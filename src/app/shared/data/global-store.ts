@@ -43,9 +43,7 @@ const generateRandom: <T>(arr: T[], num: number) => T[] = (arr, num) => {
     if (!randomIndexes.has(randomIndex)) randomIndexes.add(randomIndex);
   }
 
-  const result = Array.from(randomIndexes).map((index) => arr[index]);
-  console.log(arr);
-  return result;
+  return Array.from(randomIndexes).map((index) => arr[index]);
 };
 
 export const GlobalStore = signalStore(

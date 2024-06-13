@@ -5,14 +5,13 @@ import {
   output,
 } from '@angular/core';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
-import { debounceTime, filter, fromEvent, map } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ALPHABET, Letter } from '../../../shared/models/letter.model';
+import { KeyDirective } from './key.directive';
 
 @Component({
   selector: 'app-game-keyboard',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, KeyDirective],
   template: `
     <ul class="game-keyboard" appKey>
       @for (key of keys; track $index) {
@@ -20,6 +19,7 @@ import { ALPHABET, Letter } from '../../../shared/models/letter.model';
         styleClass="btn--full btn--keyboard"
         [label]="key"
         [disabled]="guessedLetters().includes(key)"
+        [appKey]="key"
         (onClick)="onKeyClick.emit(key)"
       />
       }
@@ -60,24 +60,4 @@ export class GameKeyboardComponent {
   onKeyClick = output<Letter>();
 
   keys = ALPHABET;
-
-  handleKeyClick(event: KeyboardEvent) {
-    const key = event.key.toUpperCase() as Letter;
-    if (this.keys.includes(key) && !this.guessedLetters().includes(key))
-      this.onKeyClick.emit(key);
-  }
-
-  constructor() {
-    fromEvent(document, 'keydown')
-      .pipe(
-        takeUntilDestroyed(),
-        debounceTime(200),
-        map((e) => (e as KeyboardEvent).key.toUpperCase() as Letter),
-        filter(
-          (key) =>
-            this.keys.includes(key) && !this.guessedLetters().includes(key)
-        )
-      )
-      .subscribe((key) => this.onKeyClick.emit(key));
-  }
 }

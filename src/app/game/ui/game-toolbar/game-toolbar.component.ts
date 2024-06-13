@@ -124,16 +124,22 @@ import { Category } from '../../../shared/models/category.model';
           padding: var(--health-padding);;
         }
 
+        &::-moz-progress-bar {
+          border-radius: var(--health-radius);
+          background: var(--white);
+          padding: var(--health-padding);;
+        }
+
         &::-webkit-progress-value {
           border-radius: var(--health-radius);;
           background: var(--dark-navy);
           transition: all .4s;
         }
 
-        &::-moz-progress-bar {
-          border-radius: var(--health-radius);
-          background: var(--white);
-          padding: var(--health-padding);;
+        &::-moz-progress-value {
+          border-radius: var(--health-radius);;
+          background: var(--dark-navy);
+          transition: all .4s;
         }
       }
 
