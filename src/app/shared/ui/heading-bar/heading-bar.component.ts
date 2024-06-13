@@ -18,6 +18,18 @@ import { StrokifyDirective } from '../../directives/strokify.directive';
   styles: `
     @use "../../../../../public/scss/abstracts/_mixins.scss" as mixins;
 
+    .btn__icon {
+      @include mixins.respond(tablet) {
+        width: 2.7rem;
+        margin-bottom: 1rem;
+      }
+
+      @include mixins.respond(phone) {
+        width: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
     .heading-bar {
       display: flex;
       align-items: center;
