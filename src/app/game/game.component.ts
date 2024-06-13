@@ -17,10 +17,11 @@ import { GlobalStore } from '../shared/data/global-store';
     GameKeyboardComponent,
   ],
   template: `
-    <section class="game">
+    <section class="game section">
       <app-game-toolbar
         [selectedCategory]="store.selectedCategory()!"
         [attemptsLeft]="store.attemptsLeft()"
+        (onMenuClick)="store.openMenu()"
       />
 
       <app-game-word
@@ -33,24 +34,21 @@ import { GlobalStore } from '../shared/data/global-store';
         (onKeyClick)="store.attemptLetter($event)"
       />
 
-      <!-- <app-menu
+      <app-menu
         menuStyleClass="menu--secondary"
         [overlay]="true"
         [isOpen]="store.menuOpen()"
-        [header]="store.gameStatus()"
-        [menuItems]="store.menuItems()"
+        [header]="store.menuConfig.header()"
+        [menuItems]="store.menuConfig.menuItems()"
       >
-      </app-menu> -->
+      </app-menu>
     </section>
   `,
   styles: `
     @use "../../../public/scss/abstracts/_mixins.scss" as mixins;
 
     .game {
-      min-height: 100vh;
-
-      position: relative;
-      padding: 6rem 11.2rem 0 11.2rem;
+      padding: 6rem 11.2rem 4rem 11.2rem;
 
       &::before {
         content: "";
@@ -62,11 +60,11 @@ import { GlobalStore } from '../shared/data/global-store';
       }
 
       @include mixins.respond(tablet) {
-        padding: 6rem 3.2rem 0 3.2rem;
+        padding: 6rem 3.2rem 4rem 3.2rem;
       }
 
       @include mixins.respond(phone) {
-        padding: 4.6rem 2.55rem 0 2.55rem;
+        padding: 4.6rem 2.55rem 3.2rem 2.55rem;
       }
     }
   `,

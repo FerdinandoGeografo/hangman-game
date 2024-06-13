@@ -6,3 +6,8 @@ export type MenuItem = {
 };
 
 export type MenuTemplateType = 'header' | 'content';
+
+export type MenuConfig = {
+  header: string;
+  menuItems: MenuItem[];
+};

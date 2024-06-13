@@ -1,25 +1,16 @@
-import { UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ButtonComponent } from '../shared/ui/button/button.component';
-import { StrokifyDirective } from '../shared/directives/strokify.directive';
 import { GlobalStore } from '../shared/data/global-store';
+import { HeadingBarComponent } from '../shared/ui/heading-bar/heading-bar.component';
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [UpperCasePipe, ButtonComponent, StrokifyDirective],
+  imports: [ButtonComponent, HeadingBarComponent],
   template: `
     <section class="categories section">
-      <!-- HEADING -->
-      <h1 class="heading">
-        <app-button styleClass="btn--icon-secondary" routerLink="../">
-          <img src="images/icon-back.svg" alt="Back" class="btn__icon" />
-        </app-button>
+      <app-heading-bar heading="Pick a Category"/>
 
-        <p class="heading heading--xl" appStrokify>Pick a Category</p>
-      </h1>
-
-      <!-- CATEGORIES -->
       <ul class="categories__list">
         @for (category of store.categoriesNames(); track $index) {
         <li>

@@ -14,6 +14,7 @@ import { computed, inject } from '@angular/core';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { MenuConfig } from '../models/menu.model';
 
 type GlobalState = {
   categories: Categories;
@@ -21,6 +22,7 @@ type GlobalState = {
   selectedOption: Option['name'] | null;
   attemptsLeft: number;
   attemptedLetters: Letter[];
+  menuConfig: MenuConfig;
 };
 
 const initialState: GlobalState = {
@@ -29,6 +31,7 @@ const initialState: GlobalState = {
   selectedOption: null,
   attemptsLeft: 8,
   attemptedLetters: [],
+  menuConfig: { header: '', menuItems: [] },
 };
 
 const generateRandom: <T>(arr: T[], num: number) => T[] = (arr, num) => {
@@ -52,15 +55,25 @@ export const GlobalStore = signalStore(
   withComputed(({ categories, selectedOption }) => ({
     categoriesNames: computed(() => Object.keys(categories())),
     toGuessLetters: computed<Letter[]>(
-      () => (selectedOption()?.split('') || []) as Letter[]
+      () => (selectedOption()?.replace(' ', '').split('') || []) as Letter[]
     ),
   })),
-  withMethods((store) => ({
+  withComputed(
+    ({ attemptsLeft, toGuessLetters, attemptedLetters, menuConfig }) => ({
+      gameOutcome: computed<'WIN' | 'LOSE' | ''>(() => {
+        if (attemptsLeft() === 0) return 'LOSE';
+        if (toGuessLetters().every((el) => attemptedLetters().includes(el)))
+          return 'WIN';
+
+        return '';
+      }),
+      menuOpen: computed(() => menuConfig().menuItems.length > 0),
+    })
+  ),
+  withMethods((store, http = inject(HttpClient)) => ({
     loadCategories: rxMethod<void>(
       pipe(
-        switchMap(() =>
-          inject(HttpClient).get<{ categories: Categories }>('data/data.json')
-        ),
+        switchMap(() => http.get<{ categories: Categories }>('data/data.json')),
         tap(({ categories }) => patchState(store, { categories }))
       )
     ),
@@ -84,6 +97,8 @@ export const GlobalStore = signalStore(
         },
         selectedCategory: category,
         selectedOption: option.name.toUpperCase().replace(`'`, ''),
+        attemptsLeft: 8,
+        menuConfig: initialState.menuConfig,
       }));
 
       patchState(store, {
@@ -103,15 +118,51 @@ export const GlobalStore = signalStore(
             : attemptsLeft - 1,
         })
       );
+
+      if (store.gameOutcome()) this.openMenu();
     },
     quitGame() {
       patchState(store, ({ categories }) => ({ ...initialState, categories }));
     },
     openMenu() {
-      patchState(store, {});
+      patchState(store, () => ({
+        menuConfig: {
+          header:
+            store.gameOutcome() === 'LOSE'
+              ? 'You Lose'
+              : store.gameOutcome() === 'WIN'
+              ? 'You Win'
+              : 'Paused',
+          menuItems: [
+            !store.gameOutcome()
+              ? {
+                  label: 'Continue',
+                  onClick: () => this.closeMenu(),
+                }
+              : {
+                  label: 'Play Again!',
+                  onClick: () => this.startGame(store.selectedCategory()!),
+                },
+            {
+              label: 'New Category',
+              routerLink: '/categories',
+              onClick: () => this.quitGame(),
+            },
+            {
+              label: 'Quit Game',
+              routerLink: '/main-menu',
+              onClick: () => {
+                this.quitGame();
+                this.loadCategories();
+              },
+              buttonStyleClass: 'btn--secondary',
+            },
+          ],
+        },
+      }));
     },
     closeMenu() {
-      patchState(store, {});
+      patchState(store, { menuConfig: initialState.menuConfig });
     },
   })),
   withHooks({

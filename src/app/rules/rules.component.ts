@@ -1,22 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ButtonComponent } from '../shared/ui/button/button.component';
-import { StrokifyDirective } from '../shared/directives/strokify.directive';
 import { RuleComponent } from './ui/rule/rule.component';
 import { RULES } from './data/rule.const';
+import { HeadingBarComponent } from '../shared/ui/heading-bar/heading-bar.component';
 
 @Component({
   selector: 'app-rules',
   standalone: true,
-  imports: [ButtonComponent, StrokifyDirective, RuleComponent],
+  imports: [ButtonComponent, HeadingBarComponent, RuleComponent],
   template: `
     <section class="rules section">
-      <h1 class="heading">
-        <app-button styleClass="btn--icon-secondary" routerLink="../">
-          <img src="images/icon-back.svg" alt="Back" class="btn__icon" />
-        </app-button>
-
-        <p class="heading heading--xl" appStrokify>How to Play</p>
-      </h1>
+      <app-heading-bar heading="How to Play"/>
 
       <div class="rules__grid">
         @for (rule of rules; track $index) {
