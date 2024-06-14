@@ -30,7 +30,7 @@ import {
 
     .rule {
       height: 100%;
-      background: var(--white);
+      background: var(--white-100);
       border-radius: 4rem;
       padding: 6rem 4.8rem;
       gap: 4rem;
@@ -54,7 +54,7 @@ import {
       }
 
       &__step {
-        color: var(--blue);
+        color: var(--blue-100);
 
         @include mixins.respond(tablet) {
           grid-row: 1 / -1;
@@ -66,7 +66,7 @@ import {
       }
 
       &__name{
-        color: var(--dark-navy);
+        color: var(--blue-400);
 
         @include mixins.respond(tablet) {
           justify-self: start;
@@ -75,7 +75,7 @@ import {
 
       &__description {
         text-align: center;
-        color: #887DC0;
+        color: var(--pink-500);
 
         @include mixins.respond(tablet) {
           text-align: left;

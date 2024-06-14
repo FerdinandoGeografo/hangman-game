@@ -1,6 +1,6 @@
 .section {
   min-height: 100vh;
-  max-width: $width--lg;
+  max-width: var(--width-lg);
   width: 100%;
   margin: 0 auto;
   padding: 8rem 11.2rem 4rem 11.2rem;

@@ -1,21 +1,13 @@
-@import "./variables";
-
 @mixin respond($breakpoint) {
     @if ($breakpoint == phone) {
-        @media only screen and (max-width: $breakpoint-sm) {
+        @media only screen and (max-width: 25em) {
             @content;
         }
     }
 
     @if ($breakpoint == tablet) {
-        @media only screen and (max-width: $breakpoint-md) {
+        @media only screen and (max-width: 48em) {
             @content;
         }
     }
 }
-
-/*
- DESKTOP : 1440 * 1024
- TABLET: 768 * 1024
- MOBILE: 375 * 812
-*/

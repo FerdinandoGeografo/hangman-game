@@ -78,7 +78,7 @@ import { Category } from '../../../shared/models/category.model';
       }
 
       &__category {
-        color: var(--white);
+        color: var(--white-100);
 
         @include mixins.respond(tablet) {
           font-size: 4.8rem;
@@ -120,25 +120,25 @@ import { Category } from '../../../shared/models/category.model';
 
         &::-webkit-progress-bar {
           border-radius: var(--health-radius);
-          background: var(--white);
+          background: var(--white-100);
           padding: var(--health-padding);;
         }
 
         &::-moz-progress-bar {
           border-radius: var(--health-radius);
-          background: var(--white);
+          background: var(--white-100);
           padding: var(--health-padding);;
         }
 
         &::-webkit-progress-value {
           border-radius: var(--health-radius);;
-          background: var(--dark-navy);
+          background: var(--blue-400);
           transition: all .4s;
         }
 
         &::-moz-progress-value {
           border-radius: var(--health-radius);;
-          background: var(--dark-navy);
+          background: var(--blue-400);
           transition: all .4s;
         }
       }
