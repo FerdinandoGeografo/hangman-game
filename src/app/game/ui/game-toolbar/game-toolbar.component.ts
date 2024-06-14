@@ -10,7 +10,7 @@ import { Category } from '../../../shared/models/category.model';
     <aside class="game-toolbar">
       <div class="game-toolbar__start">
         <app-button
-          styleClass="btn--icon-secondary"
+          styleClass="btn--icon--secondary"
           (onClick)="onMenuClick.emit()"
         >
           <img class="btn__icon" src="images/icon-menu.svg" alt="Back" />

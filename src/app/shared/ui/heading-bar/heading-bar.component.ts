@@ -1,14 +1,14 @@
 import { Component, input } from '@angular/core';
-import { ButtonComponent } from '../button/button.component';
 import { StrokifyDirective } from '../../directives/strokify.directive';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-heading-bar',
   standalone: true,
-  imports: [ButtonComponent, StrokifyDirective],
+  imports: [StrokifyDirective, ButtonComponent],
   template: `
     <h1 class="heading-bar">
-      <app-button styleClass="btn--icon-secondary" routerLink="../">
+      <app-button styleClass="btn--icon--secondary" routerLink="../">
         <img src="images/icon-back.svg" alt="Back" class="btn__icon" />
       </app-button>
 

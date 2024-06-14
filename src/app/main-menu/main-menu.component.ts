@@ -9,7 +9,7 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
   imports: [ButtonComponent, MenuComponent, MenuTemplateDirective],
   template: `
     <section class="main-menu">
-      <app-menu menuStyleClass="menu--main">
+      <app-menu menuStyleClass="menu--main" [isOpen]="true">
         <img
           *appMenuTemplate="'header'"
           src="images/logo.svg"
@@ -18,7 +18,7 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
         />
 
         <ng-template appMenuTemplate="content">
-          <app-button styleClass="btn--icon-primary" routerLink="/categories">
+          <app-button styleClass="btn--icon--primary" routerLink="/categories">
             <img src="images/icon-play.svg" alt="Play" class="btn__icon" />
           </app-button>
 

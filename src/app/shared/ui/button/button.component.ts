@@ -8,40 +8,23 @@ import {
   output,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ButtonDirective } from '../../directives/button.directive';
 
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [RouterLink, NgClass, NgTemplateOutlet, UpperCasePipe],
+  imports: [
+    RouterLink,
+    NgClass,
+    NgTemplateOutlet,
+    UpperCasePipe,
+    ButtonDirective,
+  ],
   template: `
-    <ng-template #buttonContent>
-      <ng-content select=".btn__label">
-        @if(!!label()) {
-        <span class="heading heading--md"> {{ label() | uppercase }} </span>
-        }
-      </ng-content>
-
-      <ng-content select=".btn__icon"></ng-content>
-    </ng-template>
-
-    @if(!!routerLink()) {
-    <a
-      [class]="class()"
-      [ngClass]="{ 'btn--icon': this.iconOnly() }"
-      [routerLink]="routerLink()!"
-      (click)="onClick.emit()"
-    >
-      <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
-    </a>
+    @if(routerLink()) {
+    <a [routerLink]="routerLink()!"> </a>
     } @else {
-    <button
-      [class]="class()"
-      [ngClass]="{ 'btn--icon': this.iconOnly() }"
-      (click)="onClick.emit()"
-      [disabled]="disabled()"
-    >
-      <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
-    </button>
+    <button></button>
     }
   `,
   styleUrl: './button.component.scss',
@@ -55,6 +38,6 @@ export class ButtonComponent {
 
   onClick = output();
 
-  protected class = computed(() => `btn ${this.styleClass() || ''}`);
+  protected btnClass = computed(() => `btn ${this.styleClass() || ''}`);
   protected iconOnly = computed(() => !this.label());
 }

@@ -5,31 +5,38 @@ import {
   contentChildren,
   input,
 } from '@angular/core';
-import { ButtonComponent } from '../button/button.component';
-import { StrokifyDirective } from '../../directives/strokify.directive';
-import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { MenuTemplateDirective } from '../../directives/menu-template.directive';
+import { NgClass, NgTemplateOutlet, UpperCasePipe } from '@angular/common';
+
 import { MenuItem } from '../../models/menu.model';
+
+import { MenuTemplateDirective } from '../../directives/menu-template.directive';
+import { StrokifyDirective } from '../../directives/strokify.directive';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [ButtonComponent, StrokifyDirective, NgTemplateOutlet, NgClass],
+  imports: [
+    NgTemplateOutlet,
+    NgClass,
+    UpperCasePipe,
+    StrokifyDirective,
+    ButtonComponent,
+  ],
   template: `
-    @if (!overlay() || isOpen()) { @if(overlay()) {
+    @if (isOpen()) { @if(overlay()) {
     <div class="mask"></div>
     }
+
     <div [class]="menuClass()" [ngClass]="{ 'menu--overlay': this.overlay() }">
       @if(headerTemplate() || header()) {
       <div class="menu__header">
         <ng-container [ngTemplateOutlet]="headerTemplate() || defaultHeader" />
 
         <ng-template #defaultHeader>
-          @if(!!header()) {
           <span class="heading heading--xl" appStrokify>
             {{ header() }}
           </span>
-          }
         </ng-template>
       </div>
       } @if(contentTemplate() || menuItems().length > 0) {
@@ -46,7 +53,7 @@ import { MenuItem } from '../../models/menu.model';
           >
             <div class="btn__label">
               <span class="heading heading--sm">{{
-                menuItem.label.toUpperCase()
+                menuItem.label | uppercase
               }}</span>
             </div>
           </app-button>
@@ -80,4 +87,3 @@ export class MenuComponent {
     () => this.menuTemplates().find((el) => el.type() === 'content')?.tpl
   );
 }
-export { MenuItem };
