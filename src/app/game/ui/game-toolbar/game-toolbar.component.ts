@@ -9,13 +9,14 @@ import { Category } from '../../../shared/models/category.model';
   template: `
     <aside class="game-toolbar">
       <div class="game-toolbar__start">
+        <!--
         <app-button
           styleClass="btn--icon--secondary"
           (onClick)="onMenuClick.emit()"
         >
-          <img class="btn__icon" src="images/icon-menu.svg" alt="Back" />
+          <img class="btn__icon" src="images/icon-menu.svg" alt="Menu" />
         </app-button>
-
+-->
         <h1 class="game-toolbar__category heading heading--lg">
           {{ selectedCategory() }}
         </h1>

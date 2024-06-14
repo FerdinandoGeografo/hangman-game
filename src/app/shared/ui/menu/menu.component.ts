@@ -46,7 +46,8 @@ import { ButtonComponent } from '../button/button.component';
         />
         <ng-template #defaultContent>
           @for (menuItem of menuItems(); track $index) {
-          <app-button
+          <!--
+            <app-button
             [styleClass]="menuItem.buttonStyleClass || 'btn--primary'"
             [routerLink]="menuItem.routerLink || null"
             (onClick)="menuItem.onClick?.()"
@@ -57,6 +58,7 @@ import { ButtonComponent } from '../button/button.component';
               }}</span>
             </div>
           </app-button>
+            -->
           }
         </ng-template>
       </div>

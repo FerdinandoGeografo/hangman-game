@@ -2,11 +2,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import { MenuComponent } from '../shared/ui/menu/menu.component';
 import { MenuTemplateDirective } from '../shared/directives/menu-template.directive';
+import { ButtonTemplateDirective } from '../shared/directives/button-template.directive';
 
 @Component({
   selector: 'app-main-menu',
   standalone: true,
-  imports: [ButtonComponent, MenuComponent, MenuTemplateDirective],
+  imports: [
+    ButtonComponent,
+    MenuComponent,
+    MenuTemplateDirective,
+    ButtonTemplateDirective,
+  ],
   template: `
     <section class="main-menu">
       <app-menu menuStyleClass="menu--main" [isOpen]="true">
@@ -18,12 +24,21 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
         />
 
         <ng-template appMenuTemplate="content">
-          <app-button styleClass="btn--icon--primary" routerLink="/categories">
-            <img src="images/icon-play.svg" alt="Play" class="btn__icon" />
+          <app-button
+            styleClass="btn--icon btn--icon--primary"
+            link="/categories"
+          >
+            <img
+              *appButtonTemplate="'icon'"
+              src="images/icon-play.svg"
+              alt="Play game"
+            />
           </app-button>
 
-          <app-button styleClass="btn--primary" routerLink="/rules">
-            <span class="btn__label heading heading--sm">HOW TO PLAY</span>
+          <app-button styleClass="btn--primary" link="/rules">
+            <span *appButtonTemplate="'label'" class="heading heading--sm"
+              >HOW TO PLAY</span
+            >
           </app-button>
         </ng-template>
       </app-menu>

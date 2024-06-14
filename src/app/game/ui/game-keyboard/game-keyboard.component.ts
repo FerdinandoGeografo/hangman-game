@@ -15,6 +15,7 @@ import { KeyDirective } from './key.directive';
   template: `
     <ul class="game-keyboard" appKey>
       @for (key of keys; track $index) {
+      <!--
       <app-button
         styleClass="btn--full btn--keyboard"
         [label]="key"
@@ -22,6 +23,7 @@ import { KeyDirective } from './key.directive';
         [appKey]="key"
         (onClick)="onKeyClick.emit(key)"
       />
+      -->
       }
     </ul>
   `,

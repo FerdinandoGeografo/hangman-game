@@ -8,10 +8,11 @@ import { ButtonComponent } from '../button/button.component';
   imports: [StrokifyDirective, ButtonComponent],
   template: `
     <h1 class="heading-bar">
+      <!--
       <app-button styleClass="btn--icon--secondary" routerLink="../">
         <img src="images/icon-back.svg" alt="Back" class="btn__icon" />
       </app-button>
-
+-->
       <p class="heading heading--xl" appStrokify>{{ heading() }}</p>
     </h1>
   `,

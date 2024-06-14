@@ -16,7 +16,8 @@ import { Option } from '../../../shared/models/option.model';
       @for (subWord of subWords(); track $index) {
       <li class="word__sub-word">
         @for (letter of subWord.split(''); track $index) {
-        <app-button
+        <!--
+          <app-button
           styleClass="btn--primary btn--playable"
           [disabled]="!guessedLetters().includes(letter)"
         >
@@ -26,6 +27,7 @@ import { Option } from '../../../shared/models/option.model';
           </span>
           }
         </app-button>
+        -->
         }
       </li>
       }

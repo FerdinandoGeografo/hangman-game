@@ -9,17 +9,19 @@ import { HeadingBarComponent } from '../shared/ui/heading-bar/heading-bar.compon
   imports: [ButtonComponent, HeadingBarComponent],
   template: `
     <section class="categories section">
-      <app-heading-bar heading="Pick a Category"/>
+      <app-heading-bar heading="Pick a Category" />
 
       <ul class="categories__list">
         @for (category of store.categoriesNames(); track $index) {
         <li>
+          <!--
           <app-button
             routerLink="/game"
             styleClass="btn--primary btn--full"
             [label]="category"
             (onClick)="store.startGame(category)"
           />
+        -->
         </li>
         }
       </ul>
