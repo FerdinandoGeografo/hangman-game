@@ -53,7 +53,10 @@ export const GlobalStore = signalStore(
   withComputed(({ categories, selectedOption }) => ({
     categoriesNames: computed(() => Object.keys(categories())),
     toGuessLetters: computed<Letter[]>(
-      () => [...new Set(selectedOption()?.replaceAll(" ", "").split(""))] as Letter[]
+      () =>
+        [
+          ...new Set(selectedOption()?.replaceAll(' ', '').split('')),
+        ] as Letter[]
     ),
   })),
   withComputed(

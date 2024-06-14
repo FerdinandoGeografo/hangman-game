@@ -12,6 +12,7 @@ import { MenuItem } from '../../models/menu.model';
 import { MenuTemplateDirective } from '../../directives/menu-template.directive';
 import { StrokifyDirective } from '../../directives/strokify.directive';
 import { ButtonComponent } from '../button/button.component';
+import { ButtonTemplateDirective } from '../../directives/button-template.directive';
 
 @Component({
   selector: 'app-menu',
@@ -22,6 +23,7 @@ import { ButtonComponent } from '../button/button.component';
     UpperCasePipe,
     StrokifyDirective,
     ButtonComponent,
+    ButtonTemplateDirective,
   ],
   template: `
     @if (isOpen()) { @if(overlay()) {
@@ -46,19 +48,15 @@ import { ButtonComponent } from '../button/button.component';
         />
         <ng-template #defaultContent>
           @for (menuItem of menuItems(); track $index) {
-          <!--
-            <app-button
+          <app-button
             [styleClass]="menuItem.buttonStyleClass || 'btn--primary'"
-            [routerLink]="menuItem.routerLink || null"
+            [link]="menuItem.routerLink || null"
             (onClick)="menuItem.onClick?.()"
           >
-            <div class="btn__label">
-              <span class="heading heading--sm">{{
-                menuItem.label | uppercase
-              }}</span>
-            </div>
+            <span *appButtonTemplate="'label'" class="heading heading--sm">{{
+              menuItem.label | uppercase
+            }}</span>
           </app-button>
-            -->
           }
         </ng-template>
       </div>

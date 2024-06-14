@@ -14,14 +14,12 @@ import { HeadingBarComponent } from '../shared/ui/heading-bar/heading-bar.compon
       <ul class="categories__list">
         @for (category of store.categoriesNames(); track $index) {
         <li>
-          <!--
           <app-button
-            routerLink="/game"
-            styleClass="btn--primary btn--full"
-            [label]="category"
+            link="/game"
+            styleClass="btn--full btn--primary"
+            [label]="category.toUpperCase()"
             (onClick)="store.startGame(category)"
           />
-        -->
         </li>
         }
       </ul>

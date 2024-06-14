@@ -10,7 +10,6 @@
     font-family: inherit;
     text-decoration: none;
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,7 +73,6 @@
       }
     }
   }
-
 
   &--primary {
     background: var(--blue-100);
@@ -152,31 +150,6 @@
 
     @include mixins.respond(phone) {
       border-radius: 8px;
-    }
-  }
-
-  &--playable {
-    width: 11.2rem;
-    height: 12.8rem;
-    padding: 0;
-
-    @include mixins.respond(tablet) {
-      width: 8.8rem;
-      height: 11.2rem;
-    }
-
-    @include mixins.respond(phone) {
-      width: 4rem;
-      height: 6.6rem;
-      border-radius: 1.2rem;
-
-      &::before {
-        border-radius: 1.2rem;
-      }
-    }
-
-    &:disabled {
-      opacity: .25
     }
   }
 }

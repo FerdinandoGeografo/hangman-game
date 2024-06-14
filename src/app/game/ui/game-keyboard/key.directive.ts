@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, Host, inject, input } from '@angular/core';
+import { Directive, inject, input } from '@angular/core';
 import { Letter } from '../../../shared/models/letter.model';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
 import { debounceTime, filter, fromEvent, map, tap } from 'rxjs';
@@ -14,12 +14,13 @@ export class KeyDirective {
 
   constructor() {
     fromEvent(document, 'keydown')
-    .pipe(
-      takeUntilDestroyed(),
-      debounceTime(350),
-      map((e) => (e as KeyboardEvent).key.toUpperCase() as Letter),
-      filter((letter) => letter === this.key() && !this.#host.disabled()),
-      tap(() => this.#host.onClick.emit())
-    ).subscribe();
+      .pipe(
+        takeUntilDestroyed(),
+        debounceTime(350),
+        map((e) => (e as KeyboardEvent).key.toUpperCase() as Letter),
+        filter((letter) => letter === this.key() && !this.#host.disabled()),
+        tap(() => this.#host.onClick.emit())
+      )
+      .subscribe();
   }
 }

@@ -2,7 +2,6 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ViewEncapsulation,
   computed,
   contentChildren,
   input,
@@ -27,10 +26,29 @@ import { ButtonTemplateDirective } from '../../directives/button-template.direct
       <ng-container [ngTemplateOutlet]="iconTemplate()!"></ng-container>
       }
     </ng-template>
+
+    @if(link()) {
+    <a
+      [routerLink]="link() || null"
+      [class]="btnClass()"
+      [ngClass]="btnNgClass()"
+      (click)="onClick.emit()"
+    >
+      <ng-container [ngTemplateOutlet]="content"></ng-container>
+    </a>
+    } @else {
+    <button
+      [class]="btnClass()"
+      [ngClass]="btnNgClass()"
+      (click)="onClick.emit()"
+      [disabled]="disabled()"
+    >
+      <ng-container [ngTemplateOutlet]="content"></ng-container>
+    </button>
+    }
   `,
   styleUrl: './button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class ButtonComponent {
   link = input<string | null>(null);
@@ -41,8 +59,6 @@ export class ButtonComponent {
   onClick = output();
 
   protected buttonTemplates = contentChildren(ButtonTemplateDirective);
-
-  protected btnClass = computed(() => `btn ${this.styleClass() || ''}`);
   protected labelTemplate = computed(
     () => this.buttonTemplates().find((el) => el.type() === 'label')?.tpl
   );
@@ -50,7 +66,9 @@ export class ButtonComponent {
     () => this.buttonTemplates().find((el) => el.type() === 'icon')?.tpl
   );
 
-  protected ngBtnClass = computed(() => ({
-    'btn--icon': true,
+  protected btnClass = computed(() => `btn ${this.styleClass() || ''}`);
+
+  protected btnNgClass = computed(() => ({
+    'btn--icon': this.iconTemplate(),
   }));
 }

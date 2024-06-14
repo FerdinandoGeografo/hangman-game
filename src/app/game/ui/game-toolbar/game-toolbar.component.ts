@@ -1,22 +1,27 @@
 import { Component, input, output } from '@angular/core';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
 import { Category } from '../../../shared/models/category.model';
+import { ButtonTemplateDirective } from '../../../shared/directives/button-template.directive';
 
 @Component({
   selector: 'app-game-toolbar',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, ButtonTemplateDirective],
   template: `
     <aside class="game-toolbar">
       <div class="game-toolbar__start">
-        <!--
         <app-button
           styleClass="btn--icon--secondary"
           (onClick)="onMenuClick.emit()"
         >
-          <img class="btn__icon" src="images/icon-menu.svg" alt="Menu" />
+          <img
+            *appButtonTemplate="'icon'"
+            class="game-toolbar__icon"
+            src="images/icon-menu.svg"
+            alt="Menu"
+          />
         </app-button>
--->
+
         <h1 class="game-toolbar__category heading heading--lg">
           {{ selectedCategory() }}
         </h1>
@@ -40,16 +45,6 @@ import { Category } from '../../../shared/models/category.model';
   `,
   styles: `
     @use "../../../../../public/scss/abstracts/_mixins.scss" as mixins;
-
-    .btn__icon {
-      @include mixins.respond(tablet) {
-        width: 2.5rem;
-      }
-
-      @include mixins.respond(phone) {
-        width: 1.6rem;
-      }
-    }
 
     .game-toolbar {
       display: flex;
@@ -75,6 +70,16 @@ import { Category } from '../../../shared/models/category.model';
 
         @include mixins.respond(phone) {
           gap: 1.6rem;
+        }
+      }
+
+      &__icon {
+        @include mixins.respond(tablet) {
+          width: 2.5rem;
+        }
+
+        @include mixins.respond(phone) {
+          width: 1.6rem;
         }
       }
 

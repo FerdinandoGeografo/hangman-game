@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ButtonComponent } from '../shared/ui/button/button.component';
 import { RuleComponent } from './ui/rule/rule.component';
 import { RULES } from './data/rule.const';
 import { HeadingBarComponent } from '../shared/ui/heading-bar/heading-bar.component';
@@ -7,10 +6,10 @@ import { HeadingBarComponent } from '../shared/ui/heading-bar/heading-bar.compon
 @Component({
   selector: 'app-rules',
   standalone: true,
-  imports: [ButtonComponent, HeadingBarComponent, RuleComponent],
+  imports: [HeadingBarComponent, RuleComponent],
   template: `
     <section class="rules section">
-      <app-heading-bar heading="How to Play"/>
+      <app-heading-bar heading="How to Play" />
 
       <div class="rules__grid">
         @for (rule of rules; track $index) {

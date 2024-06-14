@@ -3,8 +3,8 @@ import { ButtonComponent } from '../shared/ui/button/button.component';
 import { MenuComponent } from '../shared/ui/menu/menu.component';
 import { GameToolbarComponent } from './ui/game-toolbar/game-toolbar.component';
 import { GameKeyboardComponent } from './ui/game-keyboard/game-keyboard.component';
-import { GameWordComponent } from './ui/game-word/game-word.component';
 import { GlobalStore } from '../shared/data/global-store';
+import { GameBoardComponent } from './ui/game-board/game-board.component';
 
 @Component({
   selector: 'app-game',
@@ -13,7 +13,7 @@ import { GlobalStore } from '../shared/data/global-store';
     ButtonComponent,
     MenuComponent,
     GameToolbarComponent,
-    GameWordComponent,
+    GameBoardComponent,
     GameKeyboardComponent,
   ],
   template: `
@@ -24,13 +24,13 @@ import { GlobalStore } from '../shared/data/global-store';
         (onMenuClick)="store.openMenu()"
       />
 
-      <app-game-word
-        [word]="store.selectedOption()!"
-        [guessedLetters]="store.attemptedLetters()"
-      ></app-game-word>
+      <app-game-board
+        [selectedOption]="store.selectedOption()!"
+        [attemptedLetters]="store.attemptedLetters()"
+      ></app-game-board>
 
       <app-game-keyboard
-        [guessedLetters]="store.attemptedLetters()"
+        [attemptedLetters]="store.attemptedLetters()"
         (onKeyClick)="store.attemptLetter($event)"
       />
 

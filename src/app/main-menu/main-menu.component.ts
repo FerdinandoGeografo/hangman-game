@@ -24,14 +24,12 @@ import { ButtonTemplateDirective } from '../shared/directives/button-template.di
         />
 
         <ng-template appMenuTemplate="content">
-          <app-button
-            styleClass="btn--icon btn--icon--primary"
-            link="/categories"
-          >
+          <app-button styleClass="btn--icon--primary" link="/categories">
             <img
               *appButtonTemplate="'icon'"
               src="images/icon-play.svg"
               alt="Play game"
+              class="main-menu__icon"
             />
           </app-button>
 
@@ -58,13 +56,14 @@ import { ButtonTemplateDirective } from '../shared/directives/button-template.di
           width: 80.5%;
         }
       }
-    }
 
-    .btn__icon {
-      @include mixins.respond(phone) {
-        width: 30%;
+      &__icon {
+        @include mixins.respond(phone) {
+          width: 30%;
+        }
       }
     }
+
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
