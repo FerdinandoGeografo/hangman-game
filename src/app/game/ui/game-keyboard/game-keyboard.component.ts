@@ -4,8 +4,8 @@ import {
   input,
   output,
 } from '@angular/core';
-import { ButtonComponent } from '../../../shared/ui/button/button.component';
 import { ALPHABET, Letter } from '../../../shared/models/letter.model';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
 import { KeyDirective } from './key.directive';
 
 @Component({
@@ -57,7 +57,7 @@ import { KeyDirective } from './key.directive';
 })
 export class GameKeyboardComponent {
   attemptedLetters = input<Letter[]>([]);
-  onKeyClick = output<Letter>();
+  protected onKeyClick = output<Letter>();
 
-  keys = ALPHABET;
+  protected keys = ALPHABET;
 }

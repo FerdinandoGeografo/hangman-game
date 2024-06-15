@@ -65,5 +65,5 @@ export class GameBoardComponent {
   selectedOption = input.required<Option['name']>();
   attemptedLetters = input<string[]>([]);
 
-  innerWords = computed(() => this.selectedOption().split(' '));
+  protected innerWords = computed(() => this.selectedOption().split(' '));
 }

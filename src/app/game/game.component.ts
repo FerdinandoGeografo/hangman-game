@@ -3,8 +3,8 @@ import { ButtonComponent } from '../shared/ui/button/button.component';
 import { MenuComponent } from '../shared/ui/menu/menu.component';
 import { GameToolbarComponent } from './ui/game-toolbar/game-toolbar.component';
 import { GameKeyboardComponent } from './ui/game-keyboard/game-keyboard.component';
-import { GlobalStore } from '../shared/data/global-store';
 import { GameBoardComponent } from './ui/game-board/game-board.component';
+import { GlobalStore } from '../shared/data/global-store';
 
 @Component({
   selector: 'app-game',

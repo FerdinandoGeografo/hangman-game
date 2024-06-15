@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { HeadingBarComponent } from '../shared/ui/heading-bar/heading-bar.component';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import { GlobalStore } from '../shared/data/global-store';
-import { HeadingBarComponent } from '../shared/ui/heading-bar/heading-bar.component';
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [ButtonComponent, HeadingBarComponent],
+  imports: [HeadingBarComponent, ButtonComponent],
   template: `
     <section class="categories section">
       <app-heading-bar heading="Pick a Category" />

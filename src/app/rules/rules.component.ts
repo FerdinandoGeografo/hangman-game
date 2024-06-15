@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RuleComponent } from './ui/rule/rule.component';
 import { RULES } from './data/rule.const';
 import { HeadingBarComponent } from '../shared/ui/heading-bar/heading-bar.component';
+import { RuleComponent } from './ui/rule/rule.component';
 
 @Component({
   selector: 'app-rules',

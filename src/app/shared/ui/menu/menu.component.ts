@@ -7,11 +7,9 @@ import {
   output,
 } from '@angular/core';
 import { NgClass, NgTemplateOutlet, UpperCasePipe } from '@angular/common';
-
 import { MenuItem } from '../../models/menu.model';
-
-import { MenuTemplateDirective } from '../../directives/menu-template.directive';
 import { StrokifyDirective } from '../../directives/strokify.directive';
+import { MenuTemplateDirective } from '../../directives/menu-template.directive';
 import { ButtonComponent } from '../button/button.component';
 import { ButtonTemplateDirective } from '../../directives/button-template.directive';
 import { menuTransition } from '../../animations/menu-transition';
@@ -81,7 +79,7 @@ export class MenuComponent {
   overlay = input(false);
   isOpen = input(false);
 
-  onHide = output<void>();
+  protected onHide = output<void>();
 
   protected menuClass = computed(() => `menu ${this.menuStyleClass() || ''}`);
 

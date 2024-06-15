@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ButtonComponent } from '../shared/ui/button/button.component';
+import { ButtonTemplateDirective } from '../shared/directives/button-template.directive';
 import { MenuComponent } from '../shared/ui/menu/menu.component';
 import { MenuTemplateDirective } from '../shared/directives/menu-template.directive';
-import { ButtonTemplateDirective } from '../shared/directives/button-template.directive';
 
 @Component({
   selector: 'app-main-menu',
   standalone: true,
   imports: [
     ButtonComponent,
+    ButtonTemplateDirective,
     MenuComponent,
     MenuTemplateDirective,
-    ButtonTemplateDirective,
   ],
   template: `
     <section class="main-menu">

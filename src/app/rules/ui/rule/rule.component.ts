@@ -1,10 +1,10 @@
-import { UpperCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
   input,
 } from '@angular/core';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-rule',
@@ -94,5 +94,5 @@ export class RuleComponent {
   name = input.required<string>();
   description = input.required<string>();
 
-  stepLabel = computed(() => `0${this.step()}`);
+  protected stepLabel = computed(() => `0${this.step()}`);
 }

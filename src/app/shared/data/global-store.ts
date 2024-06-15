@@ -79,7 +79,6 @@ export const GlobalStore = signalStore(
       )
     ),
     startGame(category: Category) {
-      // 1. Select a random word from category selectables options
       const option = {
         ...generateRandom(
           store.categories()[category].filter((opt) => !opt.selected),
@@ -89,7 +88,6 @@ export const GlobalStore = signalStore(
       };
 
       patchState(store, ({ categories }) => ({
-        // 2. Updates categories for the new selection
         categories: {
           ...categories,
           [category]: categories[category].map((el) =>
@@ -99,13 +97,9 @@ export const GlobalStore = signalStore(
         selectedCategory: category,
         selectedOption: option.name.toUpperCase().replaceAll(`'`, ''),
         attemptsLeft: 8,
+        attemptedLetters: [],
         menuConfig: initialState.menuConfig,
       }));
-
-      patchState(store, {
-        //3. Prepopulate attemptedLetters with two random letters contained in toGuessLetters array
-        attemptedLetters: generateRandom(store.toGuessLetters(), 2),
-      });
     },
     attemptLetter(letter: Letter) {
       if (store.attemptedLetters().includes(letter)) return;

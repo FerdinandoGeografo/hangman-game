@@ -53,8 +53,8 @@ import { ButtonTemplateDirective } from '../../directives/button-template.direct
 export class ButtonComponent {
   link = input<string | null>(null);
   label = input<string | null>(null);
-  disabled = model(false);
   styleClass = input<string | null>(null);
+  disabled = model(false);
 
   onClick = output();
 
@@ -67,7 +67,6 @@ export class ButtonComponent {
   );
 
   protected btnClass = computed(() => `btn ${this.styleClass() || ''}`);
-
   protected btnNgClass = computed(() => ({
     'btn--icon': this.iconTemplate(),
   }));
