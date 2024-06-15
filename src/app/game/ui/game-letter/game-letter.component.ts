@@ -43,7 +43,7 @@ import { Letter } from '../../../shared/models/letter.model';
       }
 
       &__side {
-        transition: all .4s ease;
+        transition: all .6s ease;
         position: absolute;
         inset: 0;
         -webkit-backface-visibility: hidden;

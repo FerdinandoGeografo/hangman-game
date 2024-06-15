@@ -37,12 +37,13 @@ body {
   background-size: cover;
 
   position: relative;
+  min-height: 100vh;
 
   @include mixins.respond(tablet) {
     background-image: url("../../images/background-tablet.svg");
-    }
+  }
 
-    @include mixins.respond(phone) {
-      background-image: url("../../images/background-mobile.svg");
-    }
+  @include mixins.respond(phone) {
+    background-image: url("../../images/background-mobile.svg");
+  }
 }
