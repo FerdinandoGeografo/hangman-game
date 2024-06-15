@@ -40,6 +40,7 @@ import { GameBoardComponent } from './ui/game-board/game-board.component';
         [isOpen]="store.menuOpen()"
         [header]="store.menuConfig.header()"
         [menuItems]="store.menuConfig.menuItems()"
+        (onHide)="store.closeMenu()"
       >
       </app-menu>
     </section>

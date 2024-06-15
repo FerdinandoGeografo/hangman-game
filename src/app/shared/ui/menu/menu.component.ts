@@ -4,6 +4,7 @@ import {
   computed,
   contentChildren,
   input,
+  output,
 } from '@angular/core';
 import { NgClass, NgTemplateOutlet, UpperCasePipe } from '@angular/common';
 
@@ -13,6 +14,7 @@ import { MenuTemplateDirective } from '../../directives/menu-template.directive'
 import { StrokifyDirective } from '../../directives/strokify.directive';
 import { ButtonComponent } from '../button/button.component';
 import { ButtonTemplateDirective } from '../../directives/button-template.directive';
+import { menuTransition } from '../../animations/menu-transition';
 
 @Component({
   selector: 'app-menu',
@@ -27,10 +29,14 @@ import { ButtonTemplateDirective } from '../../directives/button-template.direct
   ],
   template: `
     @if (isOpen()) { @if(overlay()) {
-    <div class="mask"></div>
+    <div class="mask" (click)="onHide.emit()"></div>
     }
 
-    <div [class]="menuClass()" [ngClass]="{ 'menu--overlay': this.overlay() }">
+    <div
+      @menuTransition
+      [class]="menuClass()"
+      [ngClass]="{ 'menu--overlay': this.overlay() }"
+    >
       @if(headerTemplate() || header()) {
       <div class="menu__header">
         <ng-container [ngTemplateOutlet]="headerTemplate() || defaultHeader" />
@@ -66,20 +72,20 @@ import { ButtonTemplateDirective } from '../../directives/button-template.direct
   `,
   styleUrl: './menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [menuTransition],
 })
 export class MenuComponent {
   header = input<string | null>(null);
   menuItems = input<MenuItem[]>([]);
-
   menuStyleClass = input<string | null>(null);
   overlay = input(false);
-
   isOpen = input(false);
 
-  protected menuTemplates = contentChildren(MenuTemplateDirective);
+  onHide = output<void>();
 
   protected menuClass = computed(() => `menu ${this.menuStyleClass() || ''}`);
 
+  protected menuTemplates = contentChildren(MenuTemplateDirective);
   protected headerTemplate = computed(
     () => this.menuTemplates().find((el) => el.type() === 'header')?.tpl
   );

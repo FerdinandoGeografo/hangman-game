@@ -34,7 +34,6 @@ import { GameLetterComponent } from '../game-letter/game-letter.component';
       @include mixins.respond(tablet) {
         margin-top: 11.1rem;
         column-gap: 8.8rem;
-        overflow-x: scroll;
       }
 
       @include mixins.respond(phone) {
@@ -47,6 +46,7 @@ import { GameLetterComponent } from '../game-letter/game-letter.component';
         display: flex;
         gap: 1.6rem;
         height: 12.8rem;
+        overflow-x: auto;
 
         @include mixins.respond(tablet) {
           gap: 1.2rem;

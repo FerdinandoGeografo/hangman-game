@@ -1,15 +1,19 @@
 import { Component, input, model } from '@angular/core';
-import { Letter } from '../../../shared/models/letter.model';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-game-letter',
   standalone: true,
+  imports: [NgStyle],
   template: `
     <div class="letter">
       <div
         class="letter__side letter__side--visible"
-        [class.show]="visible()"
-        [class.hide]="!visible()"
+        [ngStyle]="
+          visible()
+            ? { transform: 'rotateY(0)' }
+            : { transform: 'rotateY(180deg)' }
+        "
       >
         <span class="letter__label heading heading--lg">
           {{ letter() }}
@@ -17,8 +21,11 @@ import { Letter } from '../../../shared/models/letter.model';
       </div>
       <div
         class="letter__side letter__side--hidden"
-        [class.show]="!visible()"
-        [class.hide]="visible()"
+        [ngStyle]="
+          visible()
+            ? { transform: 'rotateY(-180deg)' }
+            : { transform: 'rotateY(0)' }
+        "
       ></div>
     </div>
   `,
@@ -26,8 +33,8 @@ import { Letter } from '../../../shared/models/letter.model';
     @use "../../../../../public/scss/abstracts/_mixins.scss" as mixins;
 
     .letter {
-      perspective: 150rem;
-      -moz-perspective: 150rem;
+      perspective: 50rem;
+      -moz-perspective: 50rem;
       position: relative;
       height: 12.8rem;
       width: 11.2rem;
@@ -43,7 +50,7 @@ import { Letter } from '../../../shared/models/letter.model';
       }
 
       &__side {
-        transition: all .6s ease;
+        transition: all .4s;
         position: absolute;
         inset: 0;
         -webkit-backface-visibility: hidden;
@@ -61,21 +68,13 @@ import { Letter } from '../../../shared/models/letter.model';
           border-radius: 1.2rem;
         }
 
-        &--visibile {
-          background: var(--blue);
+        &--visible {
+          background: var(--blue-100);
         }
 
         &--hidden {
           opacity: .25;
         }
-      }
-
-      .show {
-        transform: rotateY(0);
-      }
-
-      .hide {
-        transform: rotateY(180deg);
       }
 
       &__label {
