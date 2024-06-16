@@ -21,7 +21,7 @@
   max-width: 59.2rem;
   width: 100%;
 
-  @include mixins.respond(phone) {
+  @include mixins.respond(phone-small) {
     border-radius: 4.8rem;
   }
 
@@ -29,7 +29,7 @@
     margin-top: 11rem;
     height: 50rem;
 
-    @include mixins.respond(phone) {
+    @include mixins.respond(phone-small) {
       margin-top: 8rem;
       height: unset;
     }
@@ -38,7 +38,7 @@
       transform: translateY(-11rem);
 
 
-      @include mixins.respond(phone) {
+      @include mixins.respond(phone-small) {
         transform: translateY(-5rem);
       }
     }
@@ -47,7 +47,7 @@
       padding-top: 12.9rem;
       gap: 5.8rem;
 
-      @include mixins.respond(phone) {
+      @include mixins.respond(phone-small) {
         padding: 13.8rem 1.6rem 6.4rem 1.6rem;
         gap: 5.7rem;
 

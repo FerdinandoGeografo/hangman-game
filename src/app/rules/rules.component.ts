@@ -32,7 +32,7 @@ import { Rule } from '../shared/models/rule.model';
         grid-template-columns: repeat(3, 1fr);
         gap: 3.2rem;
 
-        @include mixins.respond(tablet) {
+        @include mixins.respond(desktop-big) {
           margin-top: 10rem;
           grid-template-columns: 1fr;
         }

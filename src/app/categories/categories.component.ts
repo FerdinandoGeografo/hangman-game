@@ -38,7 +38,7 @@ import { GlobalStore } from '../shared/data/global-store';
         row-gap: 5rem;
         column-gap: 3.2rem;
 
-        @include mixins.respond(tablet) {
+        @include mixins.respond(desktop) {
           margin-top: 11.4rem;
           grid-template-columns: repeat(2, 1fr);
           grid-auto-rows: 18rem;

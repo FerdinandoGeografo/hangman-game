@@ -39,7 +39,7 @@ import { UpperCasePipe } from '@angular/common';
       align-content: start;
 
 
-      @include mixins.respond(tablet) {
+      @include mixins.respond(desktop-big) {
         padding: 3.2rem 4rem;
         grid-template-columns: auto 1fr;
         grid-template-rows: auto auto;
@@ -56,7 +56,7 @@ import { UpperCasePipe } from '@angular/common';
       &__step {
         color: var(--blue-100);
 
-        @include mixins.respond(tablet) {
+        @include mixins.respond(desktop-big) {
           grid-row: 1 / -1;
         }
 
@@ -68,8 +68,14 @@ import { UpperCasePipe } from '@angular/common';
       &__name{
         color: var(--blue-400);
 
-        @include mixins.respond(tablet) {
+        @include mixins.respond(desktop-big) {
           justify-self: start;
+          font-size: 4rem;
+        }
+
+        @include mixins.respond(phone) {
+          font-size: 2.4rem;
+          letter-spacing: 1.1px;
         }
       }
 
@@ -77,7 +83,7 @@ import { UpperCasePipe } from '@angular/common';
         text-align: center;
         color: var(--pink-500);
 
-        @include mixins.respond(tablet) {
+        @include mixins.respond(desktop-big) {
           text-align: left;
         }
 

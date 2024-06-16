@@ -52,13 +52,13 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
       padding-inline: 2.55rem;
 
       &__logo {
-        @include mixins.respond(phone) {
+        @include mixins.respond(phone-small) {
           width: 80.5%;
         }
       }
 
       &__icon {
-        @include mixins.respond(phone) {
+        @include mixins.respond(phone-small) {
           width: 30%;
         }
       }

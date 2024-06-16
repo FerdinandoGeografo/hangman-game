@@ -33,7 +33,7 @@ import { ButtonTemplateDirective } from '../../directives/button-template.direct
       }
 
       &__icon {
-        @include mixins.respond(tablet) {
+        @include mixins.respond(tab-land) {
           width: 2.7rem;
           margin-bottom: 1rem;
         }
