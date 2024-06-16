@@ -8,7 +8,7 @@
   width: 11.2rem;
   transform-style: preserve-3d;
 
-  @include mixins.respond(tablet) {
+  @include mixins.respond(tab-land) {
     width: 8.8rem;
     height: 11.2rem;
   }
@@ -28,7 +28,7 @@
     box-shadow: var(--shadow-xs-blue), var(--shadow-md-blue);
     border-radius: 4rem;
 
-    @include mixins.respond(tablet) {
+    @include mixins.respond(tab-land) {
       border-radius: 3.2rem;
     }
 
@@ -53,7 +53,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    @include mixins.respond(tablet) {
+    @include mixins.respond(tab-land) {
       font-size: 6.4rem;
     }
 

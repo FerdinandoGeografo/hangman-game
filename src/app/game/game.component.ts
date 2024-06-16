@@ -59,7 +59,7 @@ import { GlobalStore } from '../shared/data/global-store';
         z-index: -1;
       }
 
-      @include mixins.respond(tablet) {
+      @include mixins.respond(desktop) {
         padding: 6rem 3.2rem 4rem 3.2rem;
       }
 

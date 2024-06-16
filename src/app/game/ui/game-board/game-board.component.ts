@@ -31,7 +31,7 @@ import { GameLetterComponent } from '../game-letter/game-letter.component';
       row-gap: 1.6rem;
       justify-content: center;
 
-      @include mixins.respond(tablet) {
+      @include mixins.respond(tab-land) {
         margin-top: 11.1rem;
         column-gap: 8.8rem;
       }
@@ -48,7 +48,7 @@ import { GameLetterComponent } from '../game-letter/game-letter.component';
         height: 12.8rem;
         overflow-x: auto;
 
-        @include mixins.respond(tablet) {
+        @include mixins.respond(tab-land) {
           gap: 1.2rem;
           height: 11.2rem;
         }

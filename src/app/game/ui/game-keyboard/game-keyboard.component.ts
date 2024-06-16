@@ -37,7 +37,7 @@ import { KeyDirective } from './key.directive';
       gap: 2.4rem;
       grid-auto-rows: 8.4rem;
 
-      @include mixins.respond(tablet) {
+      @include mixins.respond(tab-land) {
         margin-top: 13.4rem;
         padding-left: 0;
         grid-template-columns: repeat(auto-fit, 6.4rem);

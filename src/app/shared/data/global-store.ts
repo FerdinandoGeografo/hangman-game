@@ -64,7 +64,7 @@ const initialStateC: GlobalState = {
 export const GlobalStore = signalStore(
   { providedIn: 'root' },
   withDevtools('global'),
-  withState(initialStateA),
+  withState(initialState),
   withComputed(({ categories, selectedOption }) => ({
     categoriesNames: computed(() => Object.keys(categories())),
     toGuessLetters: computed<Letter[]>(
