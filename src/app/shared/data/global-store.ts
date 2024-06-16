@@ -61,18 +61,6 @@ const initialStateC: GlobalState = {
   menuConfig: { header: '', menuItems: [] },
 };
 
-const generateRandom: <T>(arr: T[], num: number) => T[] = (arr, num) => {
-  if (num > arr.length) return [];
-
-  const randomIndexes: Set<number> = new Set();
-  while (randomIndexes.size < num) {
-    const randomIndex = Math.floor(Math.random() * arr.length);
-    if (!randomIndexes.has(randomIndex)) randomIndexes.add(randomIndex);
-  }
-
-  return Array.from(randomIndexes).map((index) => arr[index]);
-};
-
 export const GlobalStore = signalStore(
   { providedIn: 'root' },
   withDevtools('global'),
@@ -106,19 +94,17 @@ export const GlobalStore = signalStore(
       )
     ),
     startGame(category: Category) {
-      const option = {
-        ...generateRandom(
-          store.categories()[category].filter((opt) => !opt.selected),
-          1
-        )[0],
-        selected: true,
-      };
+      const selectableOptions = store
+        .categories()
+        [category].filter((opt) => !opt.selected);
+      const option =
+        selectableOptions[Math.floor(Math.random() * selectableOptions.length)];
 
       patchState(store, ({ categories }) => ({
         categories: {
           ...categories,
           [category]: categories[category].map((el) =>
-            el.name === option.name ? option : el
+            el.name === option.name ? { ...option, selected: true } : el
           ),
         },
         selectedCategory: category,
@@ -129,7 +115,7 @@ export const GlobalStore = signalStore(
       }));
     },
     attemptLetter(letter: Letter) {
-      if (store.attemptedLetters().includes(letter)) return;
+      if (store.attemptedLetters().includes(letter) || store.menuOpen()) return;
 
       patchState(
         store,
