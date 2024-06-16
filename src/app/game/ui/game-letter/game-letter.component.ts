@@ -5,7 +5,7 @@ import { flipAnimation } from '../../../shared/animations/flip-animation';
   selector: 'app-game-letter',
   standalone: true,
   template: `
-    <div class="letter" [@flipAnimation]="visible() ? 'true' : 'false'">
+    <div class="letter" [@flipAnimation]="visible()">
       <div class="letter__side letter__side--visible">
         <span class="letter__label heading heading--lg">
           {{ letter() }}

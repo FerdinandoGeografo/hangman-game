@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RULES } from './data/rule.const';
 import { HeadingBarComponent } from '../shared/ui/heading-bar/heading-bar.component';
 import { RuleComponent } from './ui/rule/rule.component';
+import { Rule } from '../shared/models/rule.model';
 
 @Component({
   selector: 'app-rules',
@@ -48,5 +48,21 @@ import { RuleComponent } from './ui/rule/rule.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RulesComponent {
-  protected rules = RULES;
+  protected rules: Rule[] = [
+    {
+      name: 'Choose a category',
+      description:
+        'First, choose a word category, like animals or movies. The computer then randomly selects a secret word from that topic and shows you blanks for each letter of the word.',
+    },
+    {
+      name: 'Guess letters',
+      description:
+        'Take turns guessing letters. The computer fills in the relevant blank spaces if your guess is correct. If it’s wrong, you lose some health, which empties after eight incorrect guesses.',
+    },
+    {
+      name: 'Win or lose',
+      description:
+        'You win by guessing all the letters in the word before your health runs out. If the health bar empties before you guess the word, you lose.',
+    },
+  ];
 }

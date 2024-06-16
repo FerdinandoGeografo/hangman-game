@@ -34,6 +34,33 @@ const initialState: GlobalState = {
   menuConfig: { header: '', menuItems: [] },
 };
 
+const initialStateA: GlobalState = {
+  categories: {},
+  selectedCategory: 'Countries',
+  selectedOption: 'UNITED KINGDOM',
+  attemptsLeft: 8,
+  attemptedLetters: ['U', 'N', 'I', 'D', 'O'],
+  menuConfig: { header: '', menuItems: [] },
+};
+
+const initialStateB: GlobalState = {
+  categories: {},
+  selectedCategory: 'Movies',
+  selectedOption: 'THE LION KING',
+  attemptsLeft: 8,
+  attemptedLetters: ['L', 'T', 'H', 'K', 'O', 'N'],
+  menuConfig: { header: '', menuItems: [] },
+};
+
+const initialStateC: GlobalState = {
+  categories: {},
+  selectedCategory: 'Animals',
+  selectedOption: 'GORILLA',
+  attemptsLeft: 8,
+  attemptedLetters: ['O', 'I', 'L'],
+  menuConfig: { header: '', menuItems: [] },
+};
+
 const generateRandom: <T>(arr: T[], num: number) => T[] = (arr, num) => {
   if (num > arr.length) return [];
 

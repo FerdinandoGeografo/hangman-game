@@ -40,7 +40,6 @@ import { GlobalStore } from '../shared/data/global-store';
         [isOpen]="store.menuOpen()"
         [header]="store.menuConfig.header()"
         [menuItems]="store.menuConfig.menuItems()"
-        (onHide)="store.closeMenu()"
       >
       </app-menu>
     </section>
