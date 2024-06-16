@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 
-export const menuTransition = trigger('menuTransition', [
+export const bounceAnimation = trigger('bounceAnimation', [
   transition(':enter', [
     style({ opacity: 0, scale: '0.8' }),
     animate(

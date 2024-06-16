@@ -4,7 +4,6 @@ import {
   computed,
   contentChildren,
   input,
-  output,
 } from '@angular/core';
 import { NgClass, NgTemplateOutlet, UpperCasePipe } from '@angular/common';
 import { MenuItem } from '../../models/menu.model';
@@ -12,7 +11,7 @@ import { StrokifyDirective } from '../../directives/strokify.directive';
 import { MenuTemplateDirective } from '../../directives/menu-template.directive';
 import { ButtonComponent } from '../button/button.component';
 import { ButtonTemplateDirective } from '../../directives/button-template.directive';
-import { menuTransition } from '../../animations/menu-transition';
+import { bounceAnimation } from '../../animations/bounce-animation';
 
 @Component({
   selector: 'app-menu',
@@ -27,11 +26,11 @@ import { menuTransition } from '../../animations/menu-transition';
   ],
   template: `
     @if (isOpen()) { @if(overlay()) {
-    <div class="mask" (click)="onHide.emit()"></div>
+    <div class="mask"></div>
     }
 
     <div
-      @menuTransition
+      @bounceAnimation
       [class]="menuClass()"
       [ngClass]="{ 'menu--overlay': this.overlay() }"
     >
@@ -70,7 +69,7 @@ import { menuTransition } from '../../animations/menu-transition';
   `,
   styleUrl: './menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [menuTransition],
+  animations: [bounceAnimation],
 })
 export class MenuComponent {
   header = input<string | null>(null);
@@ -78,8 +77,6 @@ export class MenuComponent {
   menuStyleClass = input<string | null>(null);
   overlay = input(false);
   isOpen = input(false);
-
-  protected onHide = output<void>();
 
   protected menuClass = computed(() => `menu ${this.menuStyleClass() || ''}`);
 

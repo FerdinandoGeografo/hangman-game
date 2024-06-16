@@ -12,6 +12,7 @@ export const routes: Routes = [
         (c) => c.MainMenuComponent
       ),
     title: buildTitle('Menu'),
+    data: { animation: 'MenuPage' },
   },
   {
     path: 'categories',
@@ -20,18 +21,21 @@ export const routes: Routes = [
         (c) => c.CategoriesComponent
       ),
     title: buildTitle('Categories'),
+    data: { animation: 'CategoriesPage' },
   },
   {
     path: 'rules',
     loadComponent: () =>
       import('./rules/rules.component').then((c) => c.RulesComponent),
     title: buildTitle('How to Play'),
+    data: { animation: 'RulesPage' },
   },
   {
     path: 'game',
     loadComponent: () =>
       import('./game/game.component').then((c) => c.GameComponent),
     title: buildTitle('Ingame'),
+    data: { animation: 'GamePage' },
     canActivate: [
       () =>
         !inject(GlobalStore).selectedCategory()

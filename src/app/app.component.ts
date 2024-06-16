@@ -1,20 +1,18 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { routeTransition } from './shared/animations/route-transition';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { routeAnimations } from './shared/animations/route-animations';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
   template: `
-    <main [@routeTransition]="route.snapshot.data">
-      <router-outlet />
+    <main [@routeAnimations]="outlet.activatedRouteData['animation']">
+      <router-outlet #outlet="outlet" />
     </main>
   `,
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [routeTransition],
+  animations: [routeAnimations],
 })
-export class AppComponent {
-  protected route = inject(ActivatedRoute);
-}
+export class AppComponent {}
