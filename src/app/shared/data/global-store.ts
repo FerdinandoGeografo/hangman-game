@@ -65,7 +65,7 @@ export const GlobalStore = signalStore(
   { providedIn: 'root' },
   withDevtools('global'),
   withState(initialState),
-  withComputed(({ categories, selectedOption }) => ({
+  withComputed(({ categories, selectedOption, menuConfig }) => ({
     categoriesNames: computed(() => Object.keys(categories())),
     toGuessLetters: computed<Letter[]>(
       () =>
@@ -73,19 +73,17 @@ export const GlobalStore = signalStore(
           ...new Set(selectedOption()?.replaceAll(' ', '').split('')),
         ] as Letter[]
     ),
+    menuOpen: computed(() => menuConfig().menuItems.length > 0),
   })),
-  withComputed(
-    ({ attemptsLeft, toGuessLetters, attemptedLetters, menuConfig }) => ({
-      gameOutcome: computed<'WIN' | 'LOSE' | ''>(() => {
-        if (attemptsLeft() === 0) return 'LOSE';
-        if (toGuessLetters().every((el) => attemptedLetters().includes(el)))
-          return 'WIN';
+  withComputed(({ attemptsLeft, toGuessLetters, attemptedLetters }) => ({
+    gameOutcome: computed<'WIN' | 'LOSE' | null>(() => {
+      if (attemptsLeft() === 0) return 'LOSE';
+      if (toGuessLetters().every((el) => attemptedLetters().includes(el)))
+        return 'WIN';
 
-        return '';
-      }),
-      menuOpen: computed(() => menuConfig().menuItems.length > 0),
-    })
-  ),
+      return null;
+    }),
+  })),
   withMethods((store, http = inject(HttpClient)) => ({
     loadCategories: rxMethod<void>(
       pipe(
@@ -111,7 +109,7 @@ export const GlobalStore = signalStore(
         selectedOption: option.name.toUpperCase().replaceAll(`'`, ''),
         attemptsLeft: 8,
         attemptedLetters: [],
-        menuConfig: initialState.menuConfig,
+        menuConfig: { ...initialState.menuConfig },
       }));
     },
     attemptLetter(letter: Letter) {
@@ -127,7 +125,9 @@ export const GlobalStore = signalStore(
         })
       );
 
-      if (store.gameOutcome()) this.openMenu();
+      if (store.gameOutcome()) {
+        this.openMenu();
+      }
     },
     quitGame() {
       patchState(store, ({ categories }) => ({ ...initialState, categories }));
@@ -170,7 +170,7 @@ export const GlobalStore = signalStore(
       }));
     },
     closeMenu() {
-      patchState(store, { menuConfig: initialState.menuConfig });
+      patchState(store, { menuConfig: { ...initialState.menuConfig } });
     },
   })),
   withHooks({

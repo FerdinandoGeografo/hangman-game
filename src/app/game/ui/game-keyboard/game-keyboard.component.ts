@@ -56,7 +56,7 @@ import { KeyDirective } from './key.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameKeyboardComponent {
-  attemptedLetters = input<Letter[]>([]);
+  attemptedLetters = input.required<Letter[]>();
   protected onKeyClick = output<Letter>();
 
   protected keys = ALPHABET;

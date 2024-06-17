@@ -12,7 +12,7 @@ import { GameLetterComponent } from '../game-letter/game-letter.component';
       <li class="board__word-item">
         @for(letter of word.split(''); track $index) {
         <app-game-letter
-          [visible]="attemptedLetters().includes(letter)"
+          [guessed]="attemptedLetters().includes(letter)"
           [letter]="letter"
         />
         }
@@ -63,7 +63,7 @@ import { GameLetterComponent } from '../game-letter/game-letter.component';
 })
 export class GameBoardComponent {
   selectedOption = input.required<Option['name']>();
-  attemptedLetters = input<string[]>([]);
+  attemptedLetters = input.required<string[]>();
 
   protected innerWords = computed(() => this.selectedOption().split(' '));
 }

@@ -19,5 +19,5 @@ export const flipAnimation = trigger('flipAnimation', [
       transform: 'rotateY(0)',
     })
   ),
-  transition('* <=> *', animate('300ms')),
+  transition('false => true', animate('450ms')),
 ]);
