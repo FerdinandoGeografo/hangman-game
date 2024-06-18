@@ -48,7 +48,10 @@ import { GlobalStore } from '../shared/data/global-store';
     @use "../../../public/scss/abstracts/_mixins.scss" as mixins;
 
     .game {
-      padding: 6rem 11.2rem 4rem 11.2rem;
+      padding: 6rem 11.2rem 7.8rem 11.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       &::before {
         content: "";
@@ -60,7 +63,8 @@ import { GlobalStore } from '../shared/data/global-store';
       }
 
       @include mixins.respond(desktop) {
-        padding: 6rem 3.2rem 4rem 3.2rem;
+        padding: 6rem 3.2rem 7.8rem 3.2rem;
+        display: block;
       }
 
       @include mixins.respond(phone) {

@@ -1,6 +1,7 @@
 import { Component, computed, input } from '@angular/core';
 import { Option } from '../../../shared/models/option.model';
 import { GameLetterComponent } from '../game-letter/game-letter.component';
+import { Letter } from '../../../shared/models/letter.model';
 
 @Component({
   selector: 'app-game-board',
@@ -8,11 +9,11 @@ import { GameLetterComponent } from '../game-letter/game-letter.component';
   imports: [GameLetterComponent],
   template: `
     <ul class="board">
-      @for(word of innerWords(); track $index;) {
-      <li class="board__word-item">
+      @for(word of optionWords(); track $index;) {
+      <li class="board__word">
         @for(letter of word.split(''); track $index) {
         <app-game-letter
-          [guessed]="attemptedLetters().includes(letter)"
+          [guessed]="letters().includes(letter)"
           [letter]="letter"
         />
         }
@@ -23,39 +24,45 @@ import { GameLetterComponent } from '../game-letter/game-letter.component';
   styles: `
     @use "../../../../../public/scss/abstracts/_mixins.scss" as mixins;
 
+    :host { margin-top: auto; }
+
     .board {
       margin-top: 8.8rem;
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       column-gap: 11.2rem;
       row-gap: 1.6rem;
-      justify-content: center;
 
       @include mixins.respond(tab-land) {
-        margin-top: 11.1rem;
         column-gap: 8.8rem;
+        margin-top: 11.1rem;
       }
 
       @include mixins.respond(phone) {
-        margin-top: 7.8rem;
         column-gap: 4rem;
+        margin-top: 7.8rem;
         row-gap: 1.2rem;
       }
 
-      &__word-item {
+      &__word {
         display: flex;
-        gap: 1.6rem;
-        height: 12.8rem;
+        column-gap: 1.6rem;
+        padding-inline: 1.6rem;
         overflow-x: auto;
 
+        &::-webkit-scrollbar {
+          height: .8rem;
+        }
+
         @include mixins.respond(tab-land) {
-          gap: 1.2rem;
-          height: 11.2rem;
+          column-gap: 1.2rem;
+          padding-inline: 1.2rem;
         }
 
         @include mixins.respond(phone) {
-          gap: 8px;
-          height: 6.6rem;
+          column-gap: 8px;
+          padding-inline: 8px;
         }
       }
     }
@@ -63,7 +70,8 @@ import { GameLetterComponent } from '../game-letter/game-letter.component';
 })
 export class GameBoardComponent {
   selectedOption = input.required<Option['name']>();
-  attemptedLetters = input.required<string[]>();
+  attemptedLetters = input.required<Letter[]>();
 
-  protected innerWords = computed(() => this.selectedOption().split(' '));
+  protected optionWords = computed(() => this.selectedOption().split(' '));
+  protected letters = computed(() => this.attemptedLetters() as string[]);
 }

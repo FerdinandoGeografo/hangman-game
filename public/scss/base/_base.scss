@@ -48,3 +48,17 @@ body {
     background-image: url("../../images/background-mobile.svg");
   }
 }
+
+::-webkit-scrollbar {
+  width: .8rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--blue-1200);
+}
+
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  border-radius: 1rem;
+  background: var(--btn-gradient);
+}

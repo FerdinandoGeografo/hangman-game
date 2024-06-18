@@ -22,6 +22,11 @@ body {
   }
 }
 
+::selection {
+  background: var(--white-100);
+  color: var(--blue-400);
+}
+
 .heading {
   line-height: 120%;
 
@@ -89,9 +94,4 @@ body {
       margin-inline: 0;
     }
   }
-}
-
-::selection {
-  background: var(--white-100);
-  color: var(--blue-400);
 }

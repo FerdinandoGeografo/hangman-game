@@ -28,25 +28,27 @@ import { KeyDirective } from './key.directive';
   styles: `
     @use "../../../../../public/scss/abstracts/_mixins.scss" as mixins;
 
+    :host { margin-top: auto; }
+
     .game-keyboard {
       margin-top: 12rem;
       padding-left: 2.9rem;
       list-style-type: none;
       display: grid;
-      grid-template-columns: repeat(auto-fit, 10.9rem);
+      grid-template-columns: repeat(auto-fill, 10.9rem);
       gap: 2.4rem;
       grid-auto-rows: 8.4rem;
 
       @include mixins.respond(tab-land) {
         margin-top: 13.4rem;
         padding-left: 0;
-        grid-template-columns: repeat(auto-fit, 6.4rem);
+        grid-template-columns: repeat(auto-fill, 6.4rem);
         column-gap: 1.6rem;
       }
 
       @include mixins.respond(phone) {
         margin-top: 11.8rem;
-        grid-template-columns: repeat(auto-fit, 2.8rem);
+        grid-template-columns: repeat(auto-fill, 2.8rem);
         column-gap: 8px;
         row-gap: 2.4rem;
         grid-auto-rows: 5.6rem;
