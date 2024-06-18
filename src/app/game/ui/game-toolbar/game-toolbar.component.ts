@@ -18,7 +18,7 @@ import { ButtonTemplateDirective } from '../../../shared/directives/button-templ
             *appButtonTemplate="'icon'"
             class="game-toolbar__icon"
             src="images/icon-menu.svg"
-            alt="Menu"
+            alt=""
           />
         </app-button>
 
@@ -38,7 +38,7 @@ import { ButtonTemplateDirective } from '../../../shared/directives/button-templ
         <img
           class="game-toolbar__health-icon"
           src="images/icon-heart.svg"
-          alt="Health icon"
+          alt=""
         />
       </div>
     </aside>

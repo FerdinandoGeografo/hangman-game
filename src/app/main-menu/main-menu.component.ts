@@ -19,7 +19,7 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
         <img
           *appMenuTemplate="'header'"
           src="images/logo.svg"
-          alt="Hangman Logo"
+          alt="Hangman Game Logo"
           class="main-menu__logo"
         />
 
@@ -28,7 +28,7 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
             <img
               *appButtonTemplate="'icon'"
               src="images/icon-play.svg"
-              alt="Play game"
+              alt=""
               class="main-menu__icon"
             />
           </app-button>

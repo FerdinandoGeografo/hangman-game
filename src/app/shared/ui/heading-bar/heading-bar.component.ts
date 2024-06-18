@@ -14,7 +14,7 @@ import { ButtonTemplateDirective } from '../../directives/button-template.direct
           *appButtonTemplate="'icon'"
           class="heading-bar__icon"
           src="images/icon-back.svg"
-          alt="Back"
+          alt=""
         />
       </app-button>
 

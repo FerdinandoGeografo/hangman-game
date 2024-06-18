@@ -14,7 +14,6 @@ This is a solution to the [Hangman game challenge on Frontend Mentor](https://ww
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -35,7 +34,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![https://hangman-game-fg.netlify.app/](./screenshot.jpg)
 
 ### Links
 
@@ -47,13 +46,12 @@ Users should be able to:
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
+- SASS following 7-1 pattern and BEM conventions
 - Flexbox
 - CSS Grid
 - Desktop-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- [Angular](https://angular.dev/) - JS Framework
+- [NgRx](https://ngrx.io/guide/signals) - For signal based State Management
 
 ### What I learned
 
@@ -93,7 +91,3 @@ Use this section to outline areas that you want to continue focusing on in futur
 - Frontend Mentor - [@FerdinandoGeografo](https://www.frontendmentor.io/profile/FerdinandoGeografo)
 - LinkedIn - [@FerdinandoGeografo](https://www.linkedin.com/in/ferdinandogeografo/)
 - GitHub - [@FerdinandoGeografo](https://github.com/FerdinandoGeografo/)
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
