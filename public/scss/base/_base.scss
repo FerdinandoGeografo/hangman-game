@@ -47,13 +47,11 @@ body {
   @include mixins.respond(phone) {
     background-image: url("../../images/background-mobile.svg");
   }
-
-  scrollbar-width: thin;
-  scrollbar-color: var(--btn-gradient) var(--blue-1200);
 }
 
 ::-webkit-scrollbar {
   width: .8rem;
+  -webkit-overflow-scrolling: auto;
 }
 
 ::-webkit-scrollbar-track {
