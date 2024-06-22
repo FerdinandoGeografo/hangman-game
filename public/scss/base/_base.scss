@@ -38,7 +38,11 @@ body {
 
   position: relative;
   overflow-x: hidden;
+  overflow-y: scroll;
   min-height: 100vh;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--btn-gradient) var(--blue-1200);
 
   @include mixins.respond(tablet) {
     background-image: url("../../images/background-tablet.svg");
@@ -51,7 +55,7 @@ body {
 
 ::-webkit-scrollbar {
   width: .8rem;
-  -webkit-overflow-scrolling: auto;
+  height: .8rem;
 }
 
 ::-webkit-scrollbar-track {

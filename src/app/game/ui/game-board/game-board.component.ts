@@ -51,10 +51,6 @@ import { Letter } from '../../../shared/models/letter.model';
         padding-inline: 1.6rem;
         overflow-x: auto;
 
-        &::-webkit-scrollbar {
-          height: .8rem;
-        }
-
         @include mixins.respond(tab-land) {
           column-gap: 1.2rem;
           padding-inline: 1.2rem;

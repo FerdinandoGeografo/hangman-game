@@ -1,14 +1,24 @@
-# Frontend Mentor - Hangman game
+# Frontend Mentor - Hangman game solution
 
-## The challenge
+This is a solution to the [Hangman game challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/hangman-game-rsQiSVLGWn). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-Your challenge is to build out this Hangman game and get it looking as close to the design as possible.
+## Table of contents
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Game behaviour](#game-behaviour)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+- [Author](#author)
 
-We provide the data in a local `data.json` file for you to use for word selections.
+## Overview
 
-Your users should be able to:
+### The challenge
+
+Users should be able to:
 
 - Learn how to play Hangman from the main menu.
 - Start a game and choose a category.
@@ -21,31 +31,63 @@ Your users should be able to:
 - See hover and focus states for all interactive elements on the page.
 - Navigate the entire game only using their keyboard.
 
-### Expected behaviour
+### Game behaviour
 
-- You can make the default screen the main menu or the in-game board. Note that we're using the in-game design for the design screenshot, so if you choose the main menu, it won't match up in the design comparison slider. This isn't a big deal, but it is something worth considering. We recommend using the in-game page as the default for solution submission so that the screenshot matches and then switching your code to make the main menu the default screen for new players.
-- Pick a random word from the chosen category to start a game. You'll need to work out the spacing for words and when to break to a new line, as some names/titles are (intentionally) long.
-- If the player guesses a letter correctly, fill in all relevant spaces and disable the letter on the keyboard.
-- If the player guesses incorrectly, disable the letter on the keyboard and reduce the health meter. The health meter should empty after eight wrong guesses. The player loses at this point, and the menu appears.
-- Selecting "play again" on the menu starts a new game with the same category. Selecting "new category" navigates to the "pick a category" screen. Quitting navigates back to the main menu.
-- Players should never be shown the same name/title multiple times if they play more than one game in a visit. The JSON data has a "selected" boolean to help you filter already played options.
+- Game starts picking a random word from the chosen category.
+- If the player guesses correctly, all relevant spaces are filled and the letter on keyboard will be disabled.
+- If the player guesses incorrectly, the letter will be disabled and the health bar reduced. The health bar will be empty after eight wrong guesses and the player loses at this point and the menu appears.
+- If the player wins, the menu appears.
+- Selecting "play again" on the menu starts a new game with the same category, if there are selectable options, otherwise the player is redirected to categories to pick a new one, and the all categories are reloaded.
+- Selecting "new category" navigates to the "pick a category" page and reload categories.
+- Quitting navigates back to the main menu and reload categories.
 - Clicking the hamburger menu during a game should show the "paused" menu.
 
-## Submitting your solution
+### Screenshot
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+![https://hangman-game-fg.netlify.app/](./screenshot.jpg)
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+### Links
 
-## Sharing your solution
+- Solution URL: [https://github.com/FerdinandoGeografo/hangman-game](https://github.com/FerdinandoGeografo/hangman-game)
+- Live Site URL: [https://hangman-game-fg.netlify.app/](https://hangman-game-fg.netlify.app/)
 
-There are multiple places you can share your solution:
+## My process
 
-1. Share your solution page in the **#finished-projects** channel of our [community](https://www.frontendmentor.io/community).
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+### Built with
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback.
+- Semantic HTML5 markup
+- SASS following 7-1 pattern and BEM conventions
+- Flexbox
+- CSS Grid
+- Desktop-first workflow
+- [Angular](https://angular.dev/) - JS Framework
+- [RxJS](https://rxjs.dev/) - JS Library
+- [NgRx](https://ngrx.io/guide/signals) - For signal based State Management in Angular
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+### What I learned
+
+Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+
+To see how you can add code snippets, see below:
+
+```html
+<h1>Some HTML code I'm proud of</h1>
+```
+
+```css
+.proud-of-this-css {
+  color: papayawhip;
+}
+```
+
+```js
+const proudOfThisFunc = () => {
+  console.log("🎉");
+};
+```
+
+## Author
+
+- Frontend Mentor - [@FerdinandoGeografo](https://www.frontendmentor.io/profile/FerdinandoGeografo)
+- LinkedIn - [@FerdinandoGeografo](https://www.linkedin.com/in/ferdinandogeografo/)
+- GitHub - [@FerdinandoGeografo](https://github.com/FerdinandoGeografo/)
