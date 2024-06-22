@@ -11,6 +11,7 @@ import { ButtonTemplateDirective } from '../../../shared/directives/button-templ
     <aside class="game-toolbar">
       <div class="game-toolbar__start">
         <app-button
+          ariaLabel="Pause the game and open menu"
           styleClass="btn--icon--secondary"
           (onClick)="onMenuClick.emit()"
         >

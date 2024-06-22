@@ -24,7 +24,11 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
         />
 
         <ng-template appMenuTemplate="content">
-          <app-button styleClass="btn--icon--primary" link="/categories">
+          <app-button
+            styleClass="btn--icon--primary"
+            link="/categories"
+            ariaLabel="Pick a category to start the game"
+          >
             <img
               *appButtonTemplate="'icon'"
               src="images/icon-play.svg"
@@ -33,7 +37,11 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
             />
           </app-button>
 
-          <app-button styleClass="btn--primary" link="/rules">
+          <app-button
+            styleClass="btn--primary"
+            link="/rules"
+            ariaLabel="Check the rules of the Hangman Game and learn how to play"
+          >
             <span *appButtonTemplate="'label'" class="heading heading--sm"
               >HOW TO PLAY</span
             >

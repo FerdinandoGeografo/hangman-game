@@ -1,5 +1,6 @@
 export type MenuItem = {
   label: string;
+  ariaLabel: string;
   routerLink?: string;
   onClick?: () => void;
   buttonStyleClass?: string;

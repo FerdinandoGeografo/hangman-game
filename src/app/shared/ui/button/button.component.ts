@@ -32,6 +32,7 @@ import { ButtonTemplateDirective } from '../../directives/button-template.direct
       [routerLink]="link() || null"
       [class]="btnClass()"
       [ngClass]="btnNgClass()"
+      [ariaLabel]="ariaLabel()"
       (click)="onClick.emit()"
     >
       <ng-container [ngTemplateOutlet]="content"></ng-container>
@@ -40,8 +41,9 @@ import { ButtonTemplateDirective } from '../../directives/button-template.direct
     <button
       [class]="btnClass()"
       [ngClass]="btnNgClass()"
-      (click)="onClick.emit()"
+      [ariaLabel]="ariaLabel()"
       [disabled]="disabled()"
+      (click)="onClick.emit()"
     >
       <ng-container [ngTemplateOutlet]="content"></ng-container>
     </button>
@@ -53,6 +55,7 @@ import { ButtonTemplateDirective } from '../../directives/button-template.direct
 export class ButtonComponent {
   link = input<string | null>(null);
   label = input<string | null>(null);
+  ariaLabel = input<string>();
   styleClass = input<string | null>(null);
   disabled = model(false);
 

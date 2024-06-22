@@ -47,16 +47,23 @@ export const GlobalStore = signalStore(
   { providedIn: 'root' },
   withDevtools('global'),
   withState(initialState),
-  withComputed(({ categories, selectedOption, menuConfig }) => ({
-    categoriesNames: computed(() => Object.keys(categories())),
-    toGuessLetters: computed<Letter[]>(
-      () =>
-        [
-          ...new Set(selectedOption()?.replaceAll(' ', '').split('')),
-        ] as Letter[]
-    ),
-    menuOpen: computed(() => menuConfig().menuItems.length > 0),
-  })),
+  withComputed(
+    ({ categories, selectedCategory, selectedOption, menuConfig }) => ({
+      categoriesNames: computed(() => Object.keys(categories())),
+      optionsAvailable: computed(() =>
+        selectedCategory()
+          ? categories()[selectedCategory()!].filter((opt) => !opt.selected)
+          : []
+      ),
+      toGuessLetters: computed<Letter[]>(
+        () =>
+          [
+            ...new Set(selectedOption()?.replaceAll(' ', '').split('')),
+          ] as Letter[]
+      ),
+      menuOpen: computed(() => menuConfig().menuItems.length > 0),
+    })
+  ),
   withComputed(({ attemptsLeft, toGuessLetters, attemptedLetters }) => ({
     gameOutcome: computed<'WIN' | 'LOSE' | null>(() => {
       if (attemptsLeft() === 0) return 'LOSE';
@@ -74,11 +81,12 @@ export const GlobalStore = signalStore(
       )
     ),
     startGame(category: Category) {
-      const selectableOptions = store
-        .categories()
-        [category].filter((opt) => !opt.selected);
+      patchState(store, { selectedCategory: category });
+
       const option =
-        selectableOptions[Math.floor(Math.random() * selectableOptions.length)];
+        store.optionsAvailable()[
+          Math.floor(Math.random() * store.optionsAvailable().length)
+        ];
 
       patchState(store, ({ categories }) => ({
         categories: {
@@ -87,7 +95,6 @@ export const GlobalStore = signalStore(
             el.name === option.name ? { ...option, selected: true } : el
           ),
         },
-        selectedCategory: category,
         selectedOption: option.name.toUpperCase().replaceAll(`'`, ''),
         attemptsLeft: initialState.attemptsLeft,
         attemptedLetters: [],
@@ -113,6 +120,7 @@ export const GlobalStore = signalStore(
     },
     quitGame() {
       patchState(store, ({ categories }) => ({ ...initialState, categories }));
+      this.loadCategories();
     },
     openMenu() {
       patchState(store, () => ({
@@ -127,24 +135,32 @@ export const GlobalStore = signalStore(
             !store.gameOutcome()
               ? {
                   label: 'Continue',
+                  ariaLabel: 'Resume the game and close menu',
                   onClick: () => this.closeMenu(),
                 }
               : {
                   label: 'Play Again!',
-                  onClick: () => this.startGame(store.selectedCategory()!),
+                  ariaLabel: 'Play again with the same category',
+                  routerLink:
+                    store.optionsAvailable().length === 0
+                      ? '/categories'
+                      : undefined,
+                  onClick: () =>
+                    store.optionsAvailable().length === 0
+                      ? this.quitGame()
+                      : this.startGame(store.selectedCategory()!),
                 },
             {
               label: 'New Category',
+              ariaLabel: 'Pick a new category and start another game',
               routerLink: '/categories',
               onClick: () => this.quitGame(),
             },
             {
               label: 'Quit Game',
+              ariaLabel: 'Quit the game and go to the main menu',
               routerLink: '/main-menu',
-              onClick: () => {
-                this.quitGame();
-                this.loadCategories();
-              },
+              onClick: () => this.quitGame(),
               buttonStyleClass: 'btn--secondary',
             },
           ],

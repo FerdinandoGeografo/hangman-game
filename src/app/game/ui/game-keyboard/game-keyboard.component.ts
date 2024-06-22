@@ -16,6 +16,7 @@ import { KeyDirective } from './key.directive';
     <ul class="game-keyboard" appKey>
       @for (key of keys; track $index) {
       <app-button
+        [ariaLabel]="'Try with the letter: ' + key"
         styleClass="btn--full btn--keyboard"
         [label]="key"
         [disabled]="attemptedLetters().includes(key)"

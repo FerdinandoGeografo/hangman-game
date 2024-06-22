@@ -18,6 +18,7 @@ import { GlobalStore } from '../shared/data/global-store';
             link="/game"
             styleClass="btn--full btn--primary"
             [label]="category.toUpperCase()"
+            [ariaLabel]="'Select the ' + category + ' and start a game'"
             (onClick)="store.startGame(category)"
           />
         </li>

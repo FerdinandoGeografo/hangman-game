@@ -9,7 +9,11 @@ import { ButtonTemplateDirective } from '../../directives/button-template.direct
   imports: [StrokifyDirective, ButtonComponent, ButtonTemplateDirective],
   template: `
     <h1 class="heading-bar">
-      <app-button styleClass="btn--icon--secondary" link="../">
+      <app-button
+        styleClass="btn--icon--secondary"
+        link="../"
+        ariaLabel="Go to previous page"
+      >
         <img
           *appButtonTemplate="'icon'"
           class="heading-bar__icon"

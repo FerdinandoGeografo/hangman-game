@@ -54,6 +54,7 @@ import { bounceAnimation } from '../../animations/bounce-animation';
           <app-button
             [styleClass]="menuItem.buttonStyleClass || 'btn--primary'"
             [link]="menuItem.routerLink || null"
+            [ariaLabel]="menuItem.ariaLabel"
             (onClick)="menuItem.onClick?.()"
           >
             <span *appButtonTemplate="'label'" class="heading heading--sm">{{

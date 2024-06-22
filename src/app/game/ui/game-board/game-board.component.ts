@@ -50,6 +50,7 @@ import { Letter } from '../../../shared/models/letter.model';
         column-gap: 1.6rem;
         padding-inline: 1.6rem;
         overflow-x: auto;
+        scrollbar-color: var(--btn-gradient) var(--blue-1200);
 
         &::-webkit-scrollbar {
           height: .8rem;
