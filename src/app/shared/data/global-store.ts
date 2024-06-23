@@ -9,7 +9,6 @@ import {
 import { Categories, Category } from '../models/category.model';
 import { Letter } from '../models/letter.model';
 import { Option } from '../models/option.model';
-import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { computed, inject } from '@angular/core';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
@@ -45,7 +44,6 @@ const mockState: GlobalState = {
 
 export const GlobalStore = signalStore(
   { providedIn: 'root' },
-  withDevtools('global'),
   withState(initialState),
   withComputed(
     ({ categories, selectedCategory, selectedOption, menuConfig }) => ({
