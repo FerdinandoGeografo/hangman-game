@@ -16,12 +16,13 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
   template: `
     <section class="main-menu">
       <app-menu menuStyleClass="menu--main" [isOpen]="true">
-        <img
-          *appMenuTemplate="'header'"
-          src="images/logo.svg"
-          alt="Hangman Game Logo"
-          class="main-menu__logo"
-        />
+        <h1 *appMenuTemplate="'header'" class="main-menu__heading">
+          <img
+            src="images/logo.svg"
+            alt="Hangman Game Logo"
+            class="main-menu__logo"
+          />
+        </h1>
 
         <ng-template appMenuTemplate="content">
           <app-button
@@ -58,6 +59,11 @@ import { MenuTemplateDirective } from '../shared/directives/menu-template.direct
       display: grid;
       place-items: center;
       padding-inline: 2.55rem;
+
+      &__heading {
+        display: flex;
+        justify-content: center;
+      }
 
       &__logo {
         @include mixins.respond(phone-small) {
