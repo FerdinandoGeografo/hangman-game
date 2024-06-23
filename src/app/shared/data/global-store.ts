@@ -33,18 +33,9 @@ const initialState: GlobalState = {
   menuConfig: { header: '', menuItems: [] },
 };
 
-const mockState: GlobalState = {
-  categories: {},
-  selectedCategory: 'Countries',
-  selectedOption: 'UNITED KINGDOM',
-  attemptsLeft: 4,
-  attemptedLetters: ['U', 'N', 'I', 'D', 'O'],
-  menuConfig: { header: '', menuItems: [] },
-};
-
 export const GlobalStore = signalStore(
   { providedIn: 'root' },
-  withState(mockState),
+  withState(initialState),
   withComputed(
     ({ categories, selectedCategory, selectedOption, menuConfig }) => ({
       categoriesNames: computed(() => Object.keys(categories())),
