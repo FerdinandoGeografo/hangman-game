@@ -45,6 +45,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/main-menu',
+    redirectTo: '/game',
   },
 ];

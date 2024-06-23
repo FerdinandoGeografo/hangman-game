@@ -44,7 +44,7 @@ const mockState: GlobalState = {
 
 export const GlobalStore = signalStore(
   { providedIn: 'root' },
-  withState(initialState),
+  withState(mockState),
   withComputed(
     ({ categories, selectedCategory, selectedOption, menuConfig }) => ({
       categoriesNames: computed(() => Object.keys(categories())),
