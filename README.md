@@ -66,7 +66,7 @@ Users should be able to:
 
 ### What I learned
 
-During this Frontend Mentor challenge called Hangman Game, I had the opportunity to delve into the new features introducted by the Angular framework with release of version 18. This project allowed me to explore and apply advanced tools from the Angular ecosystem that I had never used before, significantly enhancing the UX of the application.
+During this Frontend Mentor challenge called Hangman Game, I had the opportunity to delve into the new features introduced by the Angular framework with release of version 18. This project allowed me to explore and apply advanced tools from the Angular ecosystem that I had never used before, significantly enhancing the UX of the application.
 
 - [Angular Animations](https://angular.dev/guide/animations) : I integrated this package that allows adding animations and transitions based on particular application states. This feature gave a dynamic and interactive touch to the Hangman game, enhancing the UX, examples of the usage in the app are:
 
@@ -74,9 +74,9 @@ During this Frontend Mentor challenge called Hangman Game, I had the opportunity
   - Animation of a guessed letter that flips in showing the letter
   - Animation of the menu on open and close.
 
-- [NgRx](https://ngrx.io/guide/signals) : For state management, I chose to use NgRx Signal. This standalone library provides a reactive solution for managing global and local state through a series of utilities built on top of Angular Signals. Thanks to NgRx, I was able to mantain a well-organized folder structure and ensure total decoupling between the application's logic and state management. The logic was defined declaratively and provided as a service to the application, while data rendering and management of input events from the UI were handled through smart and dumb components.
+- [NgRx](https://ngrx.io/guide/signals) : For state management, I chose to use NgRx Signal. This standalone library provides a reactive solution for managing global and local state through a series of utilities built on top of Angular Signals. Thanks to NgRx, I was able to maintain a well-organized folder structure and ensure total decoupling between the application's logic and application's view and data rendering. The logic was defined declaratively and provided as a service to the application, while data rendering and management of input events from the UI were handled through smart and dumb components.
 
-During the development, I gained a lot of practice in creating shared reusable componenet. For example, I designed a versatile ButtonComponent that could be used both as a button ,to trigger specific actions on click, and as a link for redirects, maintaining the correct semantic of these elements.
+During the development, I gained a lot of practice in creating shared reusable component. For example, I designed a versatile ButtonComponent that could be used both as a button ,to trigger specific actions on click, and as a link for redirects, maintaining the correct semantic of these elements.
 
 Another example of a reusable component is the Menu of the game: to allow customization of the menu sections ,like header and content items, I opted for composition using ng-template, defining and exposing references to this composable templates via structural directives. This made the menu highly flexible and adaptable to different use cases needs.
 
